@@ -24,5 +24,18 @@ h3 {
     margin-bottom: 100px;
 }
 .page {
-    //height: 812px;
+    height: 812px;
+}
+.page__show { display: block; }
+.page__hide { display: none; }
+
+
+/*** PAGE INTRO ***/
+.page-intro {
+    height: 712px;
+    padding: 100px 67px 0 40px;
+    &-button {
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
 }
