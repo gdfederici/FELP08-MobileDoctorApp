@@ -1,0 +1,52 @@
+@import 'font';
+
+/*** VARIABLES ***/
+$color-theme_1a: #edf1fa;
+$color-theme_1b: #dbe3ff;
+$color-theme_1c: #4b7ffb;
+$color-theme_2a: #faf2ea;
+$color-theme_2b: #ffead6;
+$color-theme_2c: #ffb167;
+$color-theme_3a: #f9edeb;
+$color-theme_3c: #f57e71;
+$color-theme_4: #292685;
+
+$color-h: rgba(30, 28, 97, 1); //#1e1c61
+$color-text_dark: rgba(30, 28, 97, 0.65);
+$color-text_light: #ffffff;
+$color-back: #f9f9f9;
+
+$color-text_button: #f9f9f9;
+$color-back_button1: #ef716b;
+$color-back_button2: #f57e71;
+
+$color-text_form: #c0c0c0;
+$color-back_form: #f2f2f2;
+
+
+/*** ------------------------- *** ------------------------- *** ------------------------- *** ------------------------- ***/
+
+/*** BASECAMP ***/
+body {
+    color: $color-text_dark;
+    background-color: #E5E5E5;
+}
+a {
+    color: $color-text_dark;
+}
+.content { 
+    background-color: $color-back; 
+}
+h1, h2, h3, h4, h5 { 
+    color: $color-h; 
+}
+.button {
+    color: $color-text_button;
+    text-decoration: none;
+    &__typo1 {
+        background-color: $color-back_button1;
+    }
+    &__typo2 {
+        background-color: $color-back_button2;
+    }
+}
