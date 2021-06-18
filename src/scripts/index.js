@@ -54,6 +54,20 @@ function createServiceList() {
 
 /*** ------------------------- *** ------------------------- *** ------------------------- *** ------------------------- ***/
 
+// IT_ Controllo useragent per stabilire se è un dispositivo mobile (true). | EN_
+function isMobile() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
+/*** ------------------------- *** ------------------------- *** ------------------------- *** ------------------------- ***/
+
+// IT_ Viene mostrato in caso di accesso da desktop. | EN_
+function noDesktop() {
+    document.getElementById("content").innerHTML = "pippo";
+}
+
+/*** ------------------------- *** ------------------------- *** ------------------------- *** ------------------------- ***/
+
 function pageIntro() {
     document.getElementById("content").innerHTML = "";
     document.getElementById("content").appendChild(createPageIntro());
@@ -86,4 +100,4 @@ function goMain() {
 
 const medicalStaff = createMedicalStaff();
 const serviceList = createServiceList();
-pageIntro();
+isMobile() ? pageIntro() : noDesktop();
