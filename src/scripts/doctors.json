@@ -1,0 +1,7 @@
+{
+    "doctorsList":[
+        {"firstname":"Stella", "lastname":"Kane", "avatarbig":"doc-big_1", "avatarsmall":"doc-small_1", "specialization":"Heart Surgeon", "workplace":"Flower Hospitals", "phonenumber":"123456789", "msgnumber":"987654321", "videolink":"#", "about":"Dr. Stella is the top most heart surgeon in Flower Hospital. She has done over 100 successful sugeries within past 3 years. She has achieved several awards for her wonderful contribution in her own field. She’s available for private consultation for given schedules."},
+        {"firstname":"Joseph", "lastname":"Cart", "avatarbig":"doc-big_2", "avatarsmall":"doc-small_2", "specialization":"Dental Surgeon", "workplace":"Flower Hospitals", "phonenumber":"123456789", "msgnumber":"987654321", "videolink":"#", "about":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec consectetur justo a mi tempus pulvinar. Suspendisse pellentesque vitae turpis in suscipit. Proin dictum tempor dolor, sed hendrerit lorem consequat et."},
+        {"firstname":"Stefani", "lastname":"Albert", "avatarbig":"doc-big_3", "avatarsmall":"doc-small_3", "specialization":"Heart Surgeon", "workplace":"Flower Hospitals", "phonenumber":"123456789", "msgnumber":"987654321", "videolink":"#", "about":"Donec luctus interdum sem sed posuere. Sed porttitor arcu mauris, vitae dictum enim porttitor sit amet. Proin ac nibh vitae nibh consectetur ullamcorper ac vel velit. Mauris dictum mi nisi, vel semper mauris accumsan id."}
+    ]
+}

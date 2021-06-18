@@ -1,0 +1,7 @@
+{
+    "categoriesList":[
+        {"name":"Dental Surgeon", "image":"cat_dental-svg"},
+        {"name":"Heart Surgeon", "image":"cat_heart-svg"},
+        {"name":"Eye Specialist", "image":"cat_eye-svg"}
+    ]
+}
