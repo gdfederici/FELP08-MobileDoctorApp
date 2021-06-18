@@ -1,0 +1,124 @@
+@import 'reset';
+
+/*** FONTS ***/
+/* jost-200 - latin */
+@font-face {
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 200;
+    src: local(''),
+         url('../fonts/jost-v6-latin-200.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('../fonts/jost-v6-latin-200.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* jost-300 - latin */
+@font-face {
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 300;
+    src: local(''),
+         url('../fonts/jost-v6-latin-300.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('../fonts/jost-v6-latin-300.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* jost-regular - latin */
+@font-face {
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 400;
+    src: local(''),
+         url('../fonts/jost-v6-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('../fonts/jost-v6-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* jost-500 - latin */
+@font-face {
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 500;
+    src: local(''),
+         url('../fonts/jost-v6-latin-500.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('../fonts/jost-v6-latin-500.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* jost-600 - latin */
+@font-face {
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 600;
+    src: local(''),
+         url('../fonts/jost-v6-latin-600.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('../fonts/jost-v6-latin-600.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* jost-700 - latin */
+@font-face {
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 700;
+    src: local(''),
+         url('../fonts/jost-v6-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('../fonts/jost-v6-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* jost-800 - latin */
+@font-face {
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 800;
+    src: local(''),
+         url('../fonts/jost-v6-latin-800.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('../fonts/jost-v6-latin-800.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* jost-900 - latin */
+@font-face {
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 900;
+    src: local(''),
+         url('../fonts/jost-v6-latin-900.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('../fonts/jost-v6-latin-900.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+/*** VARIABLES ***/
+$font-h: 'Jost', Arial, Helvetica, sans-serif;
+$font-p: 'Jost', Arial, Helvetica, sans-serif;
+$font-button: 'Jost', Arial, Helvetica, sans-serif;
+$font_normal: 400;
+$font_bold: 700;
+$font_ultrabold: 900;
+$font-size-h_l: 3.0rem;
+$font-size-h_m: 1.8rem;
+$font-size-h_s: 1.6rem;
+$font-size_l: 2.4rem;
+$font-size_normal: 1.6rem;
+$font-size_s: 1.4rem;
+$font-size-button: 1.6rem;
+$font-size_nav: 1.4rem;
+$line-height-h_l: 3.8rem;
+$line-height-h_m: 2.4rem;
+$line-height-h_s: 2.0rem;
+$line-height_xl: 3.0rem;
+$line-height_l: 2.4rem;
+$line-height_normal: 2.2rem;
+$line-height_s: 1.8rem;
+$line-height-button: 2.0rem;
+$line-height_nav: 2.1rem;
+
+/*** MIXIN ***/
+@mixin alltext($family: $font-p, $weight: $font_normal, $size: $font-size_normal, $line-height: $line-height_normal, $align: left, $transform: none) {
+    font: {
+        family: $family;
+        weight: $weight;
+        size: $size;
+    }
+    line-height: $line-height;
+    text-align: $align;
+    text-transform: $transform;
+}
+
+
+/*** ------------------------- *** ------------------------- *** ------------------------- *** ------------------------- ***/
+
+/*** BASECAMP ***/
+body { @include alltext; }
+h1 { @include alltext($family: $font-h, $weight: $font_normal, $size: $font-size-h_l, $line-height: $line-height-h_l, $align: left, $transform: capitalize); }
+h2 { @include alltext($family: $font-h, $weight: $font_ultrabold, $size: $font-size-h_m, $line-height: $line-height-h_m, $align: left, $transform: capitalize); }
+h3 { @include alltext($family: $font-h, $weight: $font_bold, $size: $font-size-h_s, $line-height: $line-height-h_m, $align: left, $transform: capitalize); }
+h4 { @include alltext($family: $font-h, $weight: $font_normal, $size: $font-size-h_s, $line-height: $line-height-h_s, $align: left, $transform: capitalize); }
+h5 { @include alltext($family: $font-h, $weight: $font_bold, $size: $font-size-h_s, $line-height: $line-height-h_m, $align: left, $transform: capitalize); }
+.button { @include alltext($family: $font-button, $weight: $font_normal, $size: $font-size-button, $line-height: $line-height-button, $align: center, $transform: capitalize); }
