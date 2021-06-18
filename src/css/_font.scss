@@ -111,7 +111,6 @@ $line-height_nav: 2.1rem;
     text-transform: $transform;
 }
 
-
 /*** ------------------------- *** ------------------------- *** ------------------------- *** ------------------------- ***/
 
 /*** BASECAMP ***/
@@ -122,3 +121,16 @@ h3 { @include alltext($family: $font-h, $weight: $font_bold, $size: $font-size-h
 h4 { @include alltext($family: $font-h, $weight: $font_normal, $size: $font-size-h_s, $line-height: $line-height-h_s, $align: left, $transform: capitalize); }
 h5 { @include alltext($family: $font-h, $weight: $font_bold, $size: $font-size-h_s, $line-height: $line-height-h_m, $align: left, $transform: capitalize); }
 .button { @include alltext($family: $font-button, $weight: $font_normal, $size: $font-size-button, $line-height: $line-height-button, $align: center, $transform: capitalize); }
+
+
+/*** PAGE MAIN ***/
+.categories {
+    &-box a {
+        text-decoration: none;
+    }
+}
+.doctors {
+    &-box {
+        text-decoration: none;
+    }
+}

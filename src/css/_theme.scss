@@ -10,19 +10,15 @@ $color-theme_2c: #ffb167;
 $color-theme_3a: #f9edeb;
 $color-theme_3c: #f57e71;
 $color-theme_4: #292685;
-
 $color-h: rgba(30, 28, 97, 1); //#1e1c61
 $color-text_dark: rgba(30, 28, 97, 0.65);
 $color-text_light: #ffffff;
 $color-back: #f9f9f9;
-
 $color-text_button: #f9f9f9;
 $color-back_button1: #ef716b;
 $color-back_button2: #f57e71;
-
 $color-text_form: #c0c0c0;
 $color-back_form: #f2f2f2;
-
 
 /*** ------------------------- *** ------------------------- *** ------------------------- *** ------------------------- ***/
 
@@ -55,4 +51,31 @@ h1, h2, h3, h4, h5 {
 /*** PAGE INTRO ***/
 .page-intro {
     background: url("../img/back_home.svg") no-repeat bottom;
+}
+
+
+/*** PAGE MAIN ***/
+.search-form {
+    & input[type=text] {
+        background-color: $color-back_form;
+    }
+    & input[type=submit] {
+        background: url("../img/ico_search.svg") no-repeat center;
+        background-color: $color-back_button2;
+    }
+}
+.categories {
+    &-box {
+        background-color: #ffffff;
+        &__1 { background: url(../img/cat_dental.svg) no-repeat; }
+        &__2 { background: url(../img/cat_heart.svg) no-repeat; }
+        &__3 { background: url(../img/cat_eye.svg) no-repeat; }
+    }
+}
+.doctors {
+    &-box {
+        &__1 { background: $color-theme_1a; }
+        &__2 { background: $color-theme_2a; }
+        &__3 { background: $color-theme_3a; }
+    }
 }

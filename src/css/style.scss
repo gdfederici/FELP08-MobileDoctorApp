@@ -39,3 +39,98 @@ h3 {
         margin-bottom: 10px;
     }
 }
+
+
+/*** PAGE MAIN ***/
+.page-main {
+    //height: 762px;
+    padding: 50px 25px 0 25px;
+    &-navbar {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 8px;
+    }
+}
+.navbar-menu {
+    display: block;
+    min-width: 200px;
+    line-height: 42px;
+}
+.navbar-menu a {
+    display: none;
+}
+.navbar-menu a.icon {
+    display: block;
+}
+.navbar-menu__responsive a{
+    display: block;
+}
+
+/*** SCREEN READER ***/
+.onlyscreenreader {
+    height: 1px;
+    width: 1px;
+    margin: -999px;
+    overflow: hidden;
+    position: absolute;
+}
+.search-form {
+    width: 325px;
+    margin: 19px auto 25px auto;
+    display: flex;
+    justify-items: flex-start;
+    align-items: center;
+    & input[type=text] {
+        border-radius: 73px 0 0 73px;
+        border: none;
+        width: 312px;
+        padding: 10px 24px;
+        line-height: 25px;
+    }
+    & input[type=submit] {
+        border-radius: 64px;
+        border: none;
+        width: 75px;
+        padding: 10px 20px;
+        height: 53px;
+        margin-left: -62px;
+    }
+}
+
+.categories {
+    margin: 25px auto;
+    &-boxes {
+        display: flex;
+        justify-content: flex-start;
+        & li {
+            display: block;
+        }
+    }
+    &-box {
+        display: block;
+        width: 120px;
+        margin-left: 22px;
+        border-radius: 15px;
+        & h4 {
+            padding: 12px 29px 16px 24px;
+        }
+        &__1, &__2, &__3 {
+            width: 84px;
+            height: 83px;
+            margin-top: -14px;
+            margin-left: 43px;
+        }
+    }
+}
+
+.doctors {
+    margin: 25px 0;
+    &-box {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 15px auto;
+        padding: 11px 20px;
+        border-radius: 13px;
+    }
+}
