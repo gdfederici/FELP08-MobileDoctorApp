@@ -134,3 +134,32 @@ h5 { @include alltext($family: $font-h, $weight: $font_bold, $size: $font-size-h
         text-decoration: none;
     }
 }
+
+
+/*** PAGE SINGLE DOCTOR ***/
+.doc {
+    &-about {
+        & p {
+            font-size: $font-size_s;
+        }
+    }
+}
+.schedule-box {
+    &-calendar {
+        font-size: $font-size_s;
+        line-height: $line-height_s;
+        & p:first-child {
+            font-size: $font-size_l;
+            line-height: $line-height_xl;
+        }
+    }
+    &-data {
+        font-size: $font-size_s;
+        line-height: $line-height_s;
+        & p:first-child {
+            font-size: $font-size_normal;
+            line-height: $line-height_normal;
+            font-weight: $font_bold;
+        }
+    }
+}

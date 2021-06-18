@@ -79,3 +79,35 @@ h1, h2, h3, h4, h5 {
         &__3 { background: $color-theme_3a; }
     }
 }
+
+
+/*** PAGE SINGLE DOCTOR ***/
+.page-doc { 
+    background: $color-back;
+    &-navbar {
+        background: url(../img/back_doc.svg) no-repeat;
+    }
+}
+.doc {
+    &-header {
+        background: $color-back;
+    }
+}
+.schedule-box {
+    &__typo1 {
+        background: $color-theme_1a;
+    }
+    &__typo2 {
+        background: $color-theme_2a;
+    }
+    &-calendar {
+        &__typo1 {
+            background: $color-theme_1b;
+            color: $color-theme_1c;
+        }
+        &__typo2 {
+            background: $color-theme_2b;
+            color: $color-theme_2c;
+        }
+    }
+}
