@@ -59,7 +59,7 @@ h1, h2, h3, h4, h5 {
     & input[type=text] {
         background-color: $color-back_form;
     }
-    & input[type=submit] {
+    & button {
         background: url("../img/ico_search.svg") no-repeat center;
         background-color: $color-back_button2;
     }

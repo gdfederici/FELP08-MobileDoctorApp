@@ -192,7 +192,10 @@ function pageMainFind() {
     let mainFinderTitle = document.createElement("h1");
     mainFinderTitle.appendChild(document.createTextNode("Find your desired doctor"));
     mainFinder.appendChild(mainFinderTitle);
-    mainFinder.appendChild(createMainForm());
+    let searchBlock = document.createElement("div");
+    searchBlock.setAttribute("id", "searchblock");
+    searchBlock.appendChild(createMainForm());
+    mainFinder.appendChild(searchBlock);
     return mainFinder;
 }
 function createMainForm() {
@@ -209,10 +212,9 @@ function createMainForm() {
     mainFormInput.setAttribute("name", "searchdoctors");
     mainFormInput.setAttribute("placeholder", "Search for doctors");
     mainFormInput.setAttribute("required", "required");
-    let mainFormSubmit = document.createElement("input");
-    mainFormSubmit.setAttribute("type", "submit");
-    mainFormSubmit.setAttribute("name", "submit");
-    mainFormSubmit.setAttribute("value", "");
+    let mainFormSubmit = document.createElement("button");
+    mainFormSubmit.className = "button button__typo1 button__search";
+    mainFormSubmit.onclick = function() { createNameFilterDoctorsList(document.getElementById("searchdoctors").value.toLowerCase()); };
     mainForm.appendChild(mainFormInputLabel);
     mainForm.appendChild(mainFormInput);
     mainForm.appendChild(mainFormSubmit);
@@ -254,10 +256,21 @@ function createCategoriesItem(name, pos) {
     return categoriesItem;
 }
 function createCatFilterDoctorsList(cat) {
-    var medicalFilter = medicalStaff.filter(Doctor => Doctor.specialization == cat);
+    var medicalFilter = medicalStaff.filter(Doctor => Doctor.specialization === cat);
     document.getElementById("doclist").innerHTML = "";
     document.getElementById("doclist").appendChild(createDoctorsList(medicalFilter));
     document.getElementById("doclist").appendChild(resetButtonDoctors());
+}
+function createNameFilterDoctorsList(name) {
+    var medicalFilter = medicalStaff.filter(Doctor => (Doctor.firstname + " " + Doctor.lastname).toLowerCase().indexOf(name) > -1);
+    if ( medicalFilter === [] ) {
+        document.getElementById("doclist").innerHTML = "";
+        document.getElementById("doclist").appendChild(resetButtonDoctors());
+    } else {
+        document.getElementById("doclist").innerHTML = "";
+        document.getElementById("doclist").appendChild(createDoctorsList(medicalFilter));
+        document.getElementById("doclist").appendChild(resetButtonDoctors());
+    }
 }
 function resetButtonDoctors() {
     let resetButton = document.createElement("button");
@@ -267,6 +280,8 @@ function resetButtonDoctors() {
     return resetButton;
 }
 function resetDoctorsList() {
+    document.getElementById("searchblock").innerHTML = "";
+    document.getElementById("searchblock").appendChild(createMainForm());
     document.getElementById("doclist").innerHTML = "";
     document.getElementById("doclist").appendChild(createDoctorsList(medicalStaff));
 }
