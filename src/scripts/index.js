@@ -62,6 +62,13 @@ function createImage(imgSrc, imgWidth, imgHeight, imgAlt, imgClass) {
     return newImage;
 }
 
+// IT_ Crea l'elemento titolo nella pagina Main. | EN_ 
+function createPMainTitle(title) {
+    let categoriesTitle = document.createElement("h3");
+    categoriesTitle.appendChild(document.createTextNode(title));
+    return categoriesTitle;
+}
+
 // IT_ Simula collegamento #. | EN_
 function goHere() {
     console.log("Do nothing");
@@ -120,7 +127,7 @@ function createPageMain(serviceList, medicalStaff) {
     pageMain.className = "page page-main page__show";
     pageMain.appendChild(pageMainHeader());
     pageMain.appendChild(pageMainFind());
-    //pageMain.appendChild(pageMainCategories());
+    pageMain.appendChild(pageMainCategories());
     //pageMain.appendChild(pageMainDoctors());
     return pageMain;
 }
@@ -202,7 +209,40 @@ function createMainForm() {
     return mainForm;
 }
 
-
+function pageMainCategories() {
+    const listCategories = categoriesJson.categoriesList;
+    const allCategories = listCategories.length;
+    let mainCategories = document.createElement("div");
+    mainCategories.setAttribute("id", "categories");
+    mainCategories.className = "categories";
+    mainCategories.appendChild(createPMainTitle("Categories"));
+    mainCategories.appendChild(createCategoriesList(listCategories, allCategories));
+    return mainCategories;
+}
+// IT_ Crea lista delle categorie. | EN_ 
+function createCategoriesList(listCategories, allCategories) {
+    let categoriesList = document.createElement("ul");
+    categoriesList.className = "categories-boxes";
+    for (let i=0; i<allCategories; i++) {
+        categoriesList.appendChild(createCategoriesItem(listCategories[i].name, i));
+    }
+    return categoriesList;
+}
+// IT_ Crea singolo elemento della lista categorie. | EN_ 
+function createCategoriesItem(name, pos) {
+    let categoriesItem = document.createElement("li");
+    categoriesItem.className = "categories-box";
+    let categoriesLink = document.createElement("a");
+    categoriesLink.href="#";
+    let categoryBox = document.createElement("div");
+    categoryBox.className = "categories-box__" + ((pos%3)+1); // IT_ Differenzia la classe CSS per i dettagli grafici. | EN_ 
+    categoriesLink.appendChild(categoryBox);
+    let categoryName = document.createElement("h4");
+    categoryName.appendChild(document.createTextNode(name));
+    categoriesLink.appendChild(categoryName);
+    categoriesItem.appendChild(categoriesLink);
+    return categoriesItem;
+}
 
 function pageMainDoctors() {
 
