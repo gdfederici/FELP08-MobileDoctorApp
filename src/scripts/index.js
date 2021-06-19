@@ -220,8 +220,6 @@ function createMainForm() {
 }
 
 function pageMainCategories(servicesList) {
-    //const listCategories = categoriesJson.categoriesList;
-    //const allCategories = listCategories.length;
     let mainCategories = document.createElement("div");
     mainCategories.setAttribute("id", "categories");
     mainCategories.className = "categories";
@@ -235,7 +233,7 @@ function createCategoriesList(servicesList) {
     let categoriesList = document.createElement("ul");
     categoriesList.className = "categories-boxes";
     for (let i=0; i<allCategories; i++) {
-        categoriesList.appendChild(createCategoriesItem(servicesList[i].name, i));
+        categoriesList.appendChild(createCategoriesItem(servicesList[i].catname, i));
     }
     return categoriesList;
 }
@@ -243,8 +241,9 @@ function createCategoriesList(servicesList) {
 function createCategoriesItem(name, pos) {
     let categoriesItem = document.createElement("li");
     categoriesItem.className = "categories-box";
-    let categoriesLink = document.createElement("a");
-    categoriesLink.href="#";
+    let categoriesLink = document.createElement("button");
+    categoriesLink.className = "categories-box-button";
+    categoriesLink.onclick = function() { createCatFilterDoctorsList(name); };
     let categoryBox = document.createElement("div");
     categoryBox.className = "categories-box__" + ((pos%3)+1); // IT_ Differenzia la classe CSS per i dettagli grafici. | EN_ 
     categoriesLink.appendChild(categoryBox);
@@ -254,13 +253,33 @@ function createCategoriesItem(name, pos) {
     categoriesItem.appendChild(categoriesLink);
     return categoriesItem;
 }
+function createCatFilterDoctorsList(cat) {
+    var medicalFilter = medicalStaff.filter(Doctor => Doctor.specialization == cat);
+    document.getElementById("doclist").innerHTML = "";
+    document.getElementById("doclist").appendChild(createDoctorsList(medicalFilter));
+    document.getElementById("doclist").appendChild(resetButtonDoctors());
+}
+function resetButtonDoctors() {
+    let resetButton = document.createElement("button");
+    resetButton.className = "button button__typo1 button__reset";
+    resetButton.onclick = function() { resetDoctorsList(); };
+    resetButton.appendChild(document.createTextNode("Reset Filters"));
+    return resetButton;
+}
+function resetDoctorsList() {
+    document.getElementById("doclist").innerHTML = "";
+    document.getElementById("doclist").appendChild(createDoctorsList(medicalStaff));
+}
 
 function pageMainDoctors(doctorsToShow) {
     let mainDoctors = document.createElement("div");
     mainDoctors.setAttribute("id", "doctors");
     mainDoctors.className = "doctors";
     mainDoctors.appendChild(createPMainTitle("Top Doctors"));
-    mainDoctors.appendChild(createDoctorsList(doctorsToShow));
+    let docList = document.createElement("div");
+    docList.setAttribute("id", "doclist");
+    docList.appendChild(createDoctorsList(doctorsToShow));
+    mainDoctors.appendChild(docList);
     return mainDoctors;
 }
 // IT_ Crea lista dottori. | EN_ 
