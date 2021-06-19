@@ -128,7 +128,7 @@ function createPageMain(serviceList, medicalStaff) {
     pageMain.appendChild(pageMainHeader());
     pageMain.appendChild(pageMainFind());
     pageMain.appendChild(pageMainCategories());
-    //pageMain.appendChild(pageMainDoctors());
+    pageMain.appendChild(pageMainDoctors(medicalStaff));
     return pageMain;
 }
 function pageMainHeader() {
@@ -244,8 +244,41 @@ function createCategoriesItem(name, pos) {
     return categoriesItem;
 }
 
-function pageMainDoctors() {
-
+function pageMainDoctors(doctorsToShow) {
+    let mainDoctors = document.createElement("div");
+    mainDoctors.setAttribute("id", "doctors");
+    mainDoctors.className = "doctors";
+    mainDoctors.appendChild(createPMainTitle("Top Doctors"));
+    mainDoctors.appendChild(createDoctorsList(doctorsToShow));
+    return mainDoctors;
+}
+// IT_ Crea lista dottori. | EN_ 
+function createDoctorsList(doctorsToShow) {
+    let doctorsList = document.createElement("ul");
+    doctorsList.className = "doctors-boxes";
+    for (let i=0; i<doctorsToShow.length; i++) {
+        doctorsList.appendChild(createDoctorsItem(doctorsToShow[i], i));
+    }
+    return doctorsList;
+}
+// IT_ Crea singolo elemento della lista dottori. | EN_ 
+function createDoctorsItem(doctorToShow, pos) {
+    let num = (pos%3)+1; // IT_ Per differenziare la classe CSS per i dettagli grafici. | EN_ 
+    let doctorsItem = document.createElement("li");
+    let doctorsLink = document.createElement("a");
+    doctorsLink.className = "doctors-box doctors-box__" + (num);
+    doctorsLink.href = "#";
+    doctorsLink.appendChild(createImage(doctorToShow.avatarsmall, 54, 66, "Avatar Doctor"));
+    let doctorsInfo = document.createElement("div");
+    let doctorsInfoName = document.createElement("h5");
+    doctorsInfoName.appendChild(document.createTextNode("Dr. " + doctorToShow.firstname + " " + doctorToShow.lastname));
+    let doctoresInfoJob = document.createElement("p");
+    doctoresInfoJob.appendChild(document.createTextNode(doctorToShow.specialization + " - " + doctorToShow.workplace));
+    doctorsInfo.appendChild(doctorsInfoName);
+    doctorsInfo.appendChild(doctoresInfoJob);
+    doctorsLink.appendChild(doctorsInfo);
+    doctorsItem.appendChild(doctorsLink);
+    return doctorsItem;
 }
 
 
