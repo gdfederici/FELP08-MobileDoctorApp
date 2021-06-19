@@ -5,7 +5,6 @@
 /*** BASECAMP ***/
 body {
     margin: 0 auto 0 auto;
-    //width: $layout-max;
 }
 h1 {
     margin-top: 40px;
@@ -22,9 +21,6 @@ h3 {
 
 #page-intro, #page-main, #page-doc {
     margin-bottom: 100px;
-}
-.page {
-    //height: 812px;
 }
 .page__show { display: block; }
 .page__hide { display: none; }

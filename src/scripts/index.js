@@ -120,8 +120,8 @@ function createPageMain(serviceList, medicalStaff) {
     pageMain.className = "page page-main page__show";
     pageMain.appendChild(pageMainHeader());
     pageMain.appendChild(pageMainFind());
-    pageMain.appendChild(pageMainCategories());
-    pageMain.appendChild(pageMainDoctors());
+    //pageMain.appendChild(pageMainCategories());
+    //pageMain.appendChild(pageMainDoctors());
     return pageMain;
 }
 function pageMainHeader() {
@@ -160,7 +160,7 @@ function mainNavLink() {
     return mainNavItem;
 }
 function magicHamMenu() {
-    document.getElementById("hamburgerNav").classList.toggle("navbar-menu__responsive"); //IT_ Aggiunge/rimuove la classe per la visualizzazione del menu. | EN_ Add/remove the class for the menu display.
+    //document.getElementById("hamburgerNav").classList.toggle("navbar-menu__responsive"); //IT_ Aggiunge/rimuove la classe per la visualizzazione del menu. | EN_ Add/remove the class for the menu display.
 }
 function pageMainAvatar() {
     let mainAvatar = document.createElement("a");
@@ -171,15 +171,41 @@ function pageMainAvatar() {
 }
 
 function pageMainFind() {
-
+    let mainFinder = document.createElement("div");
+    let mainFinderTitle = document.createElement("h1");
+    mainFinderTitle.appendChild(document.createTextNode("Find your desired doctor"));
+    mainFinder.appendChild(mainFinderTitle);
+    mainFinder.appendChild(createMainForm());
+    return mainFinder;
+}
+function createMainForm() {
+    let mainForm = document.createElement("form");
+    mainForm.className = "search-form";
+    mainForm.action = "#";
+    mainForm.method = "get";
+    let mainFormInputLabel = document.createElement("label");
+    mainFormInputLabel.className = "onlyscreenreader";
+    mainFormInputLabel.htmlFor = "searchdoctors";
+    let mainFormInput = document.createElement("input");
+    mainFormInput.setAttribute("id", "searchdoctors");
+    mainFormInput.setAttribute("type", "text");
+    mainFormInput.setAttribute("name", "searchdoctors");
+    mainFormInput.setAttribute("placeholder", "Search for doctors");
+    mainFormInput.setAttribute("required", "required");
+    let mainFormSubmit = document.createElement("input");
+    mainFormSubmit.setAttribute("type", "submit");
+    mainFormSubmit.setAttribute("name", "submit");
+    mainFormSubmit.setAttribute("value", "");
+    mainForm.appendChild(mainFormInputLabel);
+    mainForm.appendChild(mainFormInput);
+    mainForm.appendChild(mainFormSubmit);
+    return mainForm;
 }
 
-function pageMainCategories() {
 
-}
 
 function pageMainDoctors() {
-    
+
 }
 
 
