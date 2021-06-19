@@ -51,11 +51,11 @@ class Service {
 function createServiceList() {
     const listCategories = categoriesJson.categoriesList;
     const listCategoriesLength = listCategories.length;
-    let serviceList = [];
+    let servicesList = [];
     for (let i=0; i<listCategoriesLength; i++) {
-        serviceList.push(new Service(listCategories[i].catname, listCategories[i].catimage));
+        servicesList.push(new Service(listCategories[i].name, listCategories[i].image));
     }
-    return serviceList;
+    return servicesList;
 }
 
 /*** ------------------------- *** ------------------------- *** ------------------------- *** ------------------------- ***/
@@ -101,12 +101,11 @@ function noDesktop() {
 
 /*** ------------------------- *** ------------------------- *** ------------------------- *** ------------------------- ***/
 
-function pageIntro(serviceList, medicalStaff) {
+function pageIntro(servicesList, medicalStaff) {
     document.getElementById("content").innerHTML = "";
-    document.getElementById("content").appendChild(createPageIntro(serviceList, medicalStaff));
+    document.getElementById("content").appendChild(createPageIntro(servicesList, medicalStaff));
 }
-
-function createPageIntro(serviceList, medicalStaff) {
+function createPageIntro(servicesList, medicalStaff) {
     let pageIntro = document.createElement("section");
     pageIntro.setAttribute("id", "page-intro");
     pageIntro.className = "page page-intro page__show";
@@ -118,27 +117,27 @@ function createPageIntro(serviceList, medicalStaff) {
     pageIntro.appendChild(pageIntroText);
     let pageIntroButton = document.createElement("button");
     pageIntroButton.className = "button button__typo1 page-intro-button";
-    pageIntroButton.onclick = function() { goMain(serviceList, medicalStaff); };
+    pageIntroButton.onclick = function() { goMain(servicesList, medicalStaff); };
     pageIntroButton.appendChild(document.createTextNode("Get started"));
     pageIntro.appendChild(pageIntroButton);
     return pageIntro;
 }
 
-function goMain(serviceList, medicalStaff) {
+function goMain(servicesList, medicalStaff) {
     document.getElementById("content").innerHTML = "";
-    document.getElementById("content").appendChild(createPageMain(serviceList, medicalStaff));
+    document.getElementById("content").appendChild(createPageMain(servicesList, medicalStaff));
 }
 
 /*** ------------------------- *** ------------------------- *** ------------------------- *** ------------------------- ***/
 
-function createPageMain(serviceList, medicalStaff) {
+function createPageMain(servicesList, medicalStaff) {
     document.getElementById("content").innerHTML = "";
     let pageMain = document.createElement("section");
     pageMain.setAttribute("id", "page-main");
     pageMain.className = "page page-main page__show";
     pageMain.appendChild(pageMainHeader());
     pageMain.appendChild(pageMainFind());
-    pageMain.appendChild(pageMainCategories());
+    pageMain.appendChild(pageMainCategories(servicesList));
     pageMain.appendChild(pageMainDoctors(medicalStaff));
     return pageMain;
 }
@@ -220,22 +219,23 @@ function createMainForm() {
     return mainForm;
 }
 
-function pageMainCategories() {
-    const listCategories = categoriesJson.categoriesList;
-    const allCategories = listCategories.length;
+function pageMainCategories(servicesList) {
+    //const listCategories = categoriesJson.categoriesList;
+    //const allCategories = listCategories.length;
     let mainCategories = document.createElement("div");
     mainCategories.setAttribute("id", "categories");
     mainCategories.className = "categories";
     mainCategories.appendChild(createPMainTitle("Categories"));
-    mainCategories.appendChild(createCategoriesList(listCategories, allCategories));
+    mainCategories.appendChild(createCategoriesList(servicesList));
     return mainCategories;
 }
 // IT_ Crea lista delle categorie. | EN_ 
-function createCategoriesList(listCategories, allCategories) {
+function createCategoriesList(servicesList) {
+    let allCategories = servicesList.length;
     let categoriesList = document.createElement("ul");
     categoriesList.className = "categories-boxes";
     for (let i=0; i<allCategories; i++) {
-        categoriesList.appendChild(createCategoriesItem(listCategories[i].name, i));
+        categoriesList.appendChild(createCategoriesItem(servicesList[i].name, i));
     }
     return categoriesList;
 }
@@ -300,6 +300,6 @@ function createDoctorsItem(doctorToShow, pos) {
 
 const medicalStaff = createMedicalStaff();
 console.log(medicalStaff);
-const serviceList = createServiceList();
-console.log(serviceList);
-isMobile() ? pageIntro(serviceList, medicalStaff) : noDesktop();
+const servicesList = createServiceList();
+console.log(servicesList);
+isMobile() ? pageIntro(servicesList, medicalStaff) : noDesktop();

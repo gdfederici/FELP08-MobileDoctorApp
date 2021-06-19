@@ -89,7 +89,7 @@ h3 {
     }
 }
 .categories {
-    margin: 25px auto;
+    margin: 25px -25px 25px auto;
     &-boxes {
         display: flex;
         justify-content: flex-start;
