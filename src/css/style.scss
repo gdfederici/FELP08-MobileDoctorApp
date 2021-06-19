@@ -18,10 +18,6 @@ h3 {
     padding: 10px 30px;
     border-radius: 35px;
 }
-
-#page-intro, #page-main, #page-doc {
-    margin-bottom: 100px;
-}
 .page__show { display: block; }
 .page__hide { display: none; }
 
@@ -97,6 +93,9 @@ h3 {
     &-boxes {
         display: flex;
         justify-content: flex-start;
+        overflow-x: auto;
+        padding-top: 14px;
+
         & li {
             display: block;
         }
@@ -118,12 +117,12 @@ h3 {
     }
 }
 .doctors {
-    margin: 25px 0;
+    padding: 25px 0;
     &-box {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin: 15px auto;
+        margin-top: 15px;
         padding: 11px 20px;
         border-radius: 13px;
     }

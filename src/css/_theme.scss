@@ -25,7 +25,7 @@ $color-back_form: #f2f2f2;
 /*** BASECAMP ***/
 body {
     color: $color-text_dark;
-    background-color: #E5E5E5;
+    background-color: $color-back;
 }
 a {
     color: $color-text_dark;

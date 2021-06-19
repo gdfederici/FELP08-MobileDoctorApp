@@ -1,6 +1,16 @@
 import '../css/style.scss';
 import categoriesJson from './categories.json';
 import doctorsJson from './doctors.json';
+import icoMenu from '../img/ico_menu.svg';
+import icoProfile from '../img/ico_profile.svg';
+import imgDocSmall1 from '../img/doc-small_1.svg';
+import imgDocSmall2 from '../img/doc-small_2.svg';
+import imgDocSmall3 from '../img/doc-small_3.svg';
+import imgDocBig1 from '../img/doc-big_1.webp';
+import imgDocBig2 from '../img/doc-big_2.webp';
+import imgDocBig3 from '../img/doc-big_3.webp';
+
+
 
 /*** ------------------------- *** ------------------------- *** ------------------------- *** ------------------------- ***/
 
@@ -52,9 +62,10 @@ function createServiceList() {
 
 // IT_ Crea l'elemento immagine da inserire. | EN_ Create the image element to insert.
 function createImage(imgSrc, imgWidth, imgHeight, imgAlt, imgClass) {
-    let newImage = document.createElement("img");
+    //let newImage = document.createElement("img");
+    const newImage = new Image();
     newImage.className = imgClass;
-    newImage.src = imgSrc;
+    newImage.src = "img/" + imgSrc;
     newImage.width = imgWidth;
     newImage.height = imgHeight;
     newImage.loading = "lazy";
@@ -155,7 +166,7 @@ function mainNavSpecial() {
     mainNavSpecialLink.className = "icon";
     mainNavSpecialLink.href = "javascript:void(0);"
     mainNavSpecialLink.onclick = magicHamMenu();
-    mainNavSpecialLink.appendChild(createImage("img/ico_menu.svg", 27, 11, "Hamburger menu icon", ""));
+    mainNavSpecialLink.appendChild(createImage("ico_menu.svg", 27, 11, "Hamburger menu icon", ""));
     mainNavSpecialItem.appendChild(mainNavSpecialLink);
     return mainNavSpecialItem;
 }
@@ -173,7 +184,7 @@ function pageMainAvatar() {
     let mainAvatar = document.createElement("a");
     mainAvatar.href = "javascript:void(0);"
     mainAvatar.onclick = goHere();
-    mainAvatar.appendChild(createImage("img/ico_profile.svg", 43, 42, "User avatar", ""));
+    mainAvatar.appendChild(createImage("ico_profile.svg", 43, 42, "User avatar", ""));
     return mainAvatar;
 }
 
@@ -268,7 +279,7 @@ function createDoctorsItem(doctorToShow, pos) {
     let doctorsLink = document.createElement("a");
     doctorsLink.className = "doctors-box doctors-box__" + (num);
     doctorsLink.href = "#";
-    doctorsLink.appendChild(createImage(doctorToShow.avatarsmall, 54, 66, "Avatar Doctor"));
+    doctorsLink.appendChild(createImage(doctorToShow.avatarsmall, 54, 66, "Avatar Doctor", ""));
     let doctorsInfo = document.createElement("div");
     let doctorsInfoName = document.createElement("h5");
     doctorsInfoName.appendChild(document.createTextNode("Dr. " + doctorToShow.firstname + " " + doctorToShow.lastname));
