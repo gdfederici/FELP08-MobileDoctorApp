@@ -76,10 +76,10 @@ function createImage(imgSrc, imgWidth, imgHeight, imgAlt, imgClass) {
 }
 
 // IT_ Crea l'elemento titolo nella pagina Main. | EN_ 
-function createPMainTitle(title) {
-    let categoriesTitle = document.createElement("h3");
-    categoriesTitle.appendChild(document.createTextNode(title));
-    return categoriesTitle;
+function createSimpleContent(tag, text) {
+    let isContent = document.createElement(tag);
+    isContent.appendChild(document.createTextNode(text));
+    return isContent;
 }
 
 // IT_ Simula collegamento #. | EN_
@@ -111,12 +111,8 @@ function createPageIntro(servicesList, medicalStaff) {
     let pageIntro = document.createElement("section");
     pageIntro.setAttribute("id", "page-intro");
     pageIntro.className = "page page-intro page__show";
-    let pageIntroTitle = document.createElement("h1");
-    pageIntroTitle.appendChild(document.createTextNode("Choose the doctor you want"));
-    pageIntro.appendChild(pageIntroTitle);
-    let pageIntroText = document.createElement("p");
-    pageIntroText.appendChild(document.createTextNode("Lorem ipsum dolor amet, consectetur adipiscing inet deli"));
-    pageIntro.appendChild(pageIntroText);
+    pageIntro.appendChild(createSimpleContent("h1", "Choose the doctor you want"));
+    pageIntro.appendChild(createSimpleContent("p", "Lorem ipsum dolor amet, consectetur adipiscing inet deli"));
     let pageIntroButton = document.createElement("button");
     pageIntroButton.className = "button button__typo1 page-intro-button";
     pageIntroButton.onclick = function() { goMain(servicesList, medicalStaff); };
@@ -190,9 +186,7 @@ function pageMainAvatar() {
 
 function pageMainFind() {
     let mainFinder = document.createElement("div");
-    let mainFinderTitle = document.createElement("h1");
-    mainFinderTitle.appendChild(document.createTextNode("Find your desired doctor"));
-    mainFinder.appendChild(mainFinderTitle);
+    mainFinder.appendChild(createSimpleContent("h1", "Find your desired doctor"));
     let searchBlock = document.createElement("div");
     searchBlock.setAttribute("id", "searchblock");
     searchBlock.appendChild(createMainForm());
@@ -226,7 +220,8 @@ function pageMainCategories(servicesList) {
     let mainCategories = document.createElement("div");
     mainCategories.setAttribute("id", "categories");
     mainCategories.className = "categories";
-    mainCategories.appendChild(createPMainTitle("Categories"));
+    //mainCategories.appendChild(createPMainTitle("Categories"));
+    mainCategories.appendChild(createSimpleContent("h3", "Categories"));
     mainCategories.appendChild(createCategoriesList(servicesList));
     return mainCategories;
 }
@@ -250,9 +245,7 @@ function createCategoriesItem(name, pos) {
     let categoryBox = document.createElement("div");
     categoryBox.className = "categories-box__" + ((pos%3)+1); // IT_ Differenzia la classe CSS per i dettagli grafici. | EN_ 
     categoriesLink.appendChild(categoryBox);
-    let categoryName = document.createElement("h4");
-    categoryName.appendChild(document.createTextNode(name));
-    categoriesLink.appendChild(categoryName);
+    categoriesLink.appendChild(createSimpleContent("h4", name));
     categoriesItem.appendChild(categoriesLink);
     return categoriesItem;
 }
@@ -291,7 +284,8 @@ function pageMainDoctors(doctorsToShow) {
     let mainDoctors = document.createElement("div");
     mainDoctors.setAttribute("id", "doctors");
     mainDoctors.className = "doctors";
-    mainDoctors.appendChild(createPMainTitle("Top Doctors"));
+    //mainDoctors.appendChild(createPMainTitle("Top Doctors"));
+    mainDoctors.appendChild(createSimpleContent("h3", "Top Doctors"));
     let docList = document.createElement("div");
     docList.setAttribute("id", "doclist");
     docList.appendChild(createDoctorsList(doctorsToShow));
@@ -317,12 +311,8 @@ function createDoctorsItem(doctorToShow, pos) {
     doctorsLink.onclick = function() { goDoctor(doctorToShow.firstname, doctorToShow.lastname, doctorToShow.avatarbig, doctorToShow.specialization, doctorToShow.workplace, doctorToShow.about); };
     doctorsLink.appendChild(createImage(doctorToShow.avatarsmall, 54, 66, "Avatar Doctor", ""));
     let doctorsInfo = document.createElement("div");
-    let doctorsInfoName = document.createElement("h5");
-    doctorsInfoName.appendChild(document.createTextNode("Dr. " + doctorToShow.firstname + " " + doctorToShow.lastname));
-    let doctoresInfoJob = document.createElement("p");
-    doctoresInfoJob.appendChild(document.createTextNode(doctorToShow.specialization + " - " + doctorToShow.workplace));
-    doctorsInfo.appendChild(doctorsInfoName);
-    doctorsInfo.appendChild(doctoresInfoJob);
+    doctorsInfo.appendChild(createSimpleContent("h5", "Dr. " + doctorToShow.firstname + " " + doctorToShow.lastname));
+    doctorsInfo.appendChild(createSimpleContent("p", doctorToShow.specialization + " - " + doctorToShow.workplace));
     doctorsLink.appendChild(doctorsInfo);
     doctorsItem.appendChild(doctorsLink);
     return doctorsItem;
@@ -420,22 +410,16 @@ function doctorInfoButton(image, altText) {
 function pageDoctorAbout(about) {
     let doctorAbout = document.createElement("div");
     doctorAbout.className = "doctor-about";
-    let doctorAboutTitle = document.createElement("h3");
-    doctorAboutTitle.appendChild(document.createTextNode("About Doctor"));
-    doctorAbout.appendChild(doctorAboutTitle);
-    let doctorAboutText = document.createElement("p");
-    doctorAboutText.appendChild(document.createTextNode(about));
-    doctorAbout.appendChild(doctorAboutText);
+    doctorAbout.appendChild(createSimpleContent("h3", "About Doctor"));
+    doctorAbout.appendChild(createSimpleContent("p", about));
     return doctorAbout;
 }
 
 function pageDoctorSchedules() {
     let doctorSchedules = document.createElement("div");
     doctorSchedules.className = "doctor-schedules";
-    let doctorSchedulesTitle = document.createElement("h3");
-    doctorSchedulesTitle.appendChild(document.createTextNode("Upcoming Schedules"));
-    doctorSchedules.appendChild(doctorSchedulesTitle);
-    doctorSchedules.appendChild(createSchedules());
+    doctorSchedules.appendChild(createSimpleContent("h3", "Upcoming Schedules"));
+    //doctorSchedules.appendChild(createSchedules());
     return doctorSchedules;
 }
 function createSchedules() {
