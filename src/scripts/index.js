@@ -21,7 +21,7 @@ import imgDocBig3 from '../img/doc-big_3.webp';
 
 // IT_ Classe singolo dottore. | EN_ 
 class Doctor {
-    constructor(firstname, lastname, avatarbig, avatarsmall, specialization, workplace, phonenumber, msgnumber, videolink, about) {
+    constructor(firstname, lastname, avatarbig, avatarsmall, specialization, workplace, about) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.avatarbig = avatarbig;
@@ -343,7 +343,7 @@ function createPageDoctor(firstname, lastname, avatarbig, specialization, workpl
     pageDoctor.className = "page page-doctor";
     pageDoctor.appendChild(pageDoctorNavbar());
     pageDoctor.appendChild(pageDoctorHeader(firstname, lastname, avatarbig, specialization, workplace));
-    //pageDoctor.appendChild(pageDoctorAbout(about));
+    pageDoctor.appendChild(pageDoctorAbout(about));
     //pageDoctor.appendChild(pageDoctorSchedules());
     return pageDoctor;
 }
@@ -417,7 +417,17 @@ function doctorInfoButton(image, altText) {
     docInfoButton.appendChild(createImage(image, 35, 35, altText, ""));
     return docInfoButton;
 }  
-
+function pageDoctorAbout(about) {
+    let doctorAbout = document.createElement("div");
+    doctorAbout.className = "doctor-about";
+    let doctorAboutTitle = document.createElement("h3");
+    doctorAboutTitle.appendChild(document.createTextNode("About Doctor"));
+    doctorAbout.appendChild(doctorAboutTitle);
+    let doctorAboutText = document.createElement("p");
+    doctorAboutText.appendChild(document.createTextNode(about));
+    doctorAbout.appendChild(doctorAboutText);
+    return doctorAbout;
+}
 
 
 /*** ------------------------- *** ------------------------- *** ------------------------- *** ------------------------- ***/
