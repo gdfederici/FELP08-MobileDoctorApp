@@ -418,11 +418,24 @@ function pageDoctorSchedules() {
     let doctorSchedules = document.createElement("div");
     doctorSchedules.className = "doctor-schedules";
     doctorSchedules.appendChild(createSimpleContent("h3", "Upcoming Schedules"));
-    //doctorSchedules.appendChild(createSchedules());
+    doctorSchedules.appendChild(createSchedule("12", "Jan", "Consultation", "Sunday", "9am", "11am", 1));
+    doctorSchedules.appendChild(createSchedule("13", "Jan", "Consultation", "Monday", "9am", "11am", 2));
     return doctorSchedules;
 }
-function createSchedules() {
-    
+function createSchedule(dd, mm, type, day, hStart, hStop, pos) {
+    let doctorSchedule = document.createElement("div");
+    doctorSchedule.className = "schedule-box schedule-box__typo" + pos;
+    let doctorScheduleCalendar = document.createElement("div");
+    doctorScheduleCalendar.className = "schedule-box-calendar schedule-box-calendar__typo" + pos;
+    doctorScheduleCalendar.appendChild(createSimpleContent("p", dd));
+    doctorScheduleCalendar.appendChild(createSimpleContent("p", mm));
+    doctorSchedule.appendChild(doctorScheduleCalendar);
+    let doctorScheduleData = document.createElement("div");
+    doctorScheduleData.className = "schedule-box-data";
+    doctorScheduleData.appendChild(createSimpleContent("p", type));
+    doctorScheduleData.appendChild(createSimpleContent("p", day + " , " + hStart + " - " + hStop));
+    doctorSchedule.appendChild(doctorScheduleData);
+    return doctorSchedule;
 }
 
 
