@@ -49,17 +49,16 @@ h3 {
 .navbar-menu {
     display: block;
     min-width: 200px;
-    line-height: 42px;;
-}
-.navbar-menu a {
-    display: none;
-}
-.navbar-menu a.icon {
-    display: block;
-}
-.navbar-menu__responsive a {
-    display: flex;
-    z-index: 10;
+    line-height: 42px;
+    & a {
+        display: none;
+        &.icon {
+            display: block;
+        }
+    }
+    &__responsive a {
+        display: block;
+    }
 }
 
 /*** SCREEN READER ***/
