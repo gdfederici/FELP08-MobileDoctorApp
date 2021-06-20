@@ -91,6 +91,7 @@ h3 {
         margin-left: -62px;
     }
 }
+
 .categories {
     margin: 25px -25px 25px auto;
     &-boxes {
@@ -125,7 +126,6 @@ h3 {
     }
 }
 
-
 .doctors {
     padding: 25px 0;
     &-box {
@@ -135,6 +135,9 @@ h3 {
         margin-top: 15px;
         padding: 11px 20px;
         border-radius: 13px;
+        & img {
+            margin-right: 15px;
+        }
     }
 }
 
@@ -162,6 +165,7 @@ h3 {
         }
     }
 }
+
 .doctor {
     &-header {
         display: flex;
@@ -188,6 +192,7 @@ h3 {
         padding: 0 25px;
     }
 }
+
 .schedule-box {
     display: flex;
     align-items: center;
