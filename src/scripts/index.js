@@ -1,8 +1,13 @@
 import '../css/style.scss';
 import categoriesJson from './categories.json';
 import doctorsJson from './doctors.json';
-import icoMenu from '../img/ico_menu.svg';
+import icoMenuHam from '../img/ico_menu.svg';
 import icoProfile from '../img/ico_profile.svg';
+import icoMenuPoints from '../img/ico_points.svg';
+import icoBack from '../img/ico_Back.svg';
+import icoPhone from '../img/ico_phone.svg';
+import icoMsg from '../img/ico_msg.svg';
+import icoVideo from '../img/ico_video.svg';
 import imgDocSmall1 from '../img/doc-small_1.svg';
 import imgDocSmall2 from '../img/doc-small_2.svg';
 import imgDocSmall3 from '../img/doc-small_3.svg';
@@ -124,7 +129,6 @@ function createPageIntro(servicesList, medicalStaff) {
 }
 
 function goMain(servicesList, medicalStaff) {
-    document.getElementById("content").innerHTML = "";
     document.getElementById("content").appendChild(createPageMain(servicesList, medicalStaff));
 }
 
@@ -310,9 +314,10 @@ function createDoctorsList(doctorsToShow) {
 function createDoctorsItem(doctorToShow, pos) {
     let num = (pos%3)+1; // IT_ Per differenziare la classe CSS per i dettagli grafici. | EN_ 
     let doctorsItem = document.createElement("li");
-    let doctorsLink = document.createElement("a");
+    let doctorsLink = document.createElement("button");
     doctorsLink.className = "doctors-box doctors-box__" + (num);
-    doctorsLink.href = "#";
+    //doctorsLink.href = "#";
+    doctorsLink.onclick = function() { goDoctor(doctorToShow.firstname, doctorToShow.lastname, doctorToShow.avatarbig, doctorToShow.specialization, doctorToShow.workplace, doctorToShow.phonenumber, doctorToShow.msgnumber, doctorToShow.videolink, doctorToShow.about); };
     doctorsLink.appendChild(createImage(doctorToShow.avatarsmall, 54, 66, "Avatar Doctor", ""));
     let doctorsInfo = document.createElement("div");
     let doctorsInfoName = document.createElement("h5");
@@ -327,6 +332,94 @@ function createDoctorsItem(doctorToShow, pos) {
 }
 
 
+/*** ------------------------- *** ------------------------- *** ------------------------- *** ------------------------- ***/
+
+
+function goDoctor(firstname, lastname, avatarbig, specialization, workplace, phonenumber, msgnumber, videolink, about) {
+    document.getElementById("content").appendChild(createPageDoctor(firstname, lastname, avatarbig, specialization, workplace, phonenumber, msgnumber, videolink, about));
+}
+
+function createPageDoctor(firstname, lastname, avatarbig, specialization, workplace, phonenumber, msgnumber, videolink, about) {
+    document.getElementById("content").innerHTML = "";
+    let pageDoctor = document.createElement("section");
+    pageDoctor.setAttribute("id", "page-doctor");
+    pageDoctor.className = "page page-doctor";
+    pageDoctor.appendChild(pageDoctorNavbar());
+    pageDoctor.appendChild(pageDoctorHeader(firstname, lastname, avatarbig, specialization, workplace, phonenumber, msgnumber, videolink));
+    //pageDoctor.appendChild(pageDoctorAbout(about));
+    //pageDoctor.appendChild(pageDoctorSchedules());
+    return pageDoctor;
+}
+function pageDoctorNavbar() {
+    let pageDoctorNavbar = document.createElement("div");
+    pageDoctorNavbar.className = "page-doctor-navbar";
+    let navDoc = document.createElement("div");
+    navDoc.className = "navdoc";
+    let navBack = document.createElement("div");
+    navBack.appendChild(createImage("ico_back.svg", 11, 15, "Back icon", ""));
+    navDoc.appendChild(navBack);
+    navDoc.appendChild(pageDoctorNav());
+    pageDoctorNavbar.appendChild(navDoc);
+    return pageDoctorNavbar;
+}
+function pageDoctorNav() {
+    let doctorNav = document.createElement("nav");
+    doctorNav.setAttribute("id", "pointsNav");
+    doctorNav.className = "navdoc-menu";
+    let doctorNavMenu = document.createElement("ul");
+    doctorNavMenu.appendChild(doctorNavSpecial());
+    for (let i=0; i<3; i++) { doctorNavMenu.appendChild(doctorNavLink()); }
+    doctorNav.appendChild(doctorNavMenu);
+    return doctorNav;
+}
+function doctorNavSpecial() {
+    let doctorNavSpecialItem = document.createElement("li");
+    let doctorNavSpecialLink = document.createElement("a");
+    doctorNavSpecialLink.setAttribute("id", "pointsMenu");
+    doctorNavSpecialLink.className = "icon";
+    doctorNavSpecialLink.href = "javascript:void(0);"
+    doctorNavSpecialLink.onclick = magicPointsMenu();
+    doctorNavSpecialLink.appendChild(createImage("ico_points.svg", 5, 16, "Three points menu icon", ""));
+    doctorNavSpecialItem.appendChild(doctorNavSpecialLink);
+    return doctorNavSpecialItem;
+}
+function doctorNavLink() {
+    let doctorNavItem = document.createElement("li");
+    let doctorNavLink = document.createElement("a");
+    doctorNavLink.href = "javascript:void(0);"
+    doctorNavItem.appendChild(doctorNavLink);
+    return doctorNavItem;
+}
+function magicPointsMenu() {
+
+}
+function pageDoctorHeader(firstname, lastname, avatarbig, specialization, workplace, phonenumber, msgnumber, videolink) {
+    let doctorHeader = document.createElement("header");
+    doctorHeader.className = "doctor-header";
+    doctorHeader.appendChild(createImage(avatarbig, 88, 107, "Avatar doctor", ""));
+    doctorHeader.appendChild(doctorInfo(firstname, lastname, specialization, workplace, phonenumber, msgnumber, videolink));
+    return doctorHeader;
+}
+function doctorInfo(firstname, lastname, specialization, workplace, phonenumber, msgnumber, videolink) {
+    let doctorInfo = document.createElement("div");
+    doctorInfo.className = "doctor-info";
+    let doctorInfoTitle = document.createElement("h2");
+    doctorInfoTitle.appendChild(document.createTextNode("Dr. " + firstname + " " + lastname));
+    doctorInfo.appendChild(doctorInfoTitle);
+    let doctorInfoText = document.createElement("p");
+    doctorInfoText.appendChild(document.createTextNode(specialization + " - " + workplace));
+    doctorInfo.appendChild(doctorInfoText);
+    doctorInfo.appendChild(doctorInfoButton("ico_phone.svg", "Phone to doctor"));
+    doctorInfo.appendChild(doctorInfoButton("ico_msg.svg", "Message to doctor"));
+    doctorInfo.appendChild(doctorInfoButton("ico_video.svg", "Video to doctor"));
+    return doctorInfo;
+}
+function doctorInfoButton(image, altText) {
+    let docInfoButton = document.createElement("button");
+    docInfoButton.onclick = goHere();
+    docInfoButton.appendChild(createImage(image, 35, 35, altText, ""));
+    return docInfoButton;
+}  
 
 
 

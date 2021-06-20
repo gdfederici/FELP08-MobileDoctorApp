@@ -85,13 +85,13 @@ h1, h2, h3, h4, h5 {
 
 
 /*** PAGE SINGLE DOCTOR ***/
-.page-doc { 
+.page-doctor { 
     background: $color-back;
     &-navbar {
         background: url(../img/back_doc.svg) no-repeat;
     }
 }
-.doc {
+.doctor {
     &-header {
         background: $color-back;
     }
