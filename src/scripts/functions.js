@@ -17,7 +17,7 @@ export function createImage(imgSrc, imgWidth, imgHeight, imgAlt) {
 
 // IT_ Crea un semplice contenuto testuale (titolo o paragrafo) a cui non devono essere applicati classi o altro. | EN_ 
 export function createSimpleContent(tag, text) {
-    let isContent = document.createElement(tag);
+    const isContent = document.createElement(tag);
     isContent.appendChild(document.createTextNode(text));
     return isContent;
 }
