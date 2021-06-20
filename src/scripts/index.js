@@ -160,8 +160,7 @@ function mainNavSpecial() {
     let mainNavSpecialLink = document.createElement("a");
     mainNavSpecialLink.setAttribute("id", "hamburgerMenu");
     mainNavSpecialLink.className = "icon";
-    mainNavSpecialLink.href = "javascript:void(0);"
-    mainNavSpecialLink.onclick = magicHamMenu();
+    mainNavSpecialLink.onclick = function() { magicHamMenu(); }
     mainNavSpecialLink.appendChild(createImage(icoMenuHam, 27, 11, "Hamburger menu icon", ""));
     mainNavSpecialItem.appendChild(mainNavSpecialLink);
     return mainNavSpecialItem;
@@ -169,17 +168,18 @@ function mainNavSpecial() {
 function mainNavLink() {
     let mainNavItem = document.createElement("li");
     let mainNavLink = document.createElement("a");
-    mainNavLink.href = "javascript:void(0);"
+    mainNavLink.appendChild(document.createTextNode("link"));
+    mainNavLink.onclick = function() { goHere(); }
     mainNavItem.appendChild(mainNavLink);
     return mainNavItem;
 }
 function magicHamMenu() {
-    //document.getElementById("hamburgerNav").classList.toggle("navbar-menu__responsive"); //IT_ Aggiunge/rimuove la classe per la visualizzazione del menu. | EN_ Add/remove the class for the menu display.
+    document.getElementById("hamburgerNav").classList.toggle("navbar-menu__responsive"); //IT_ Aggiunge/rimuove la classe per la visualizzazione del menu. | EN_ Add/remove the class for the menu display.
 }
 function pageMainAvatar() {
     let mainAvatar = document.createElement("a");
     mainAvatar.href = "javascript:void(0);"
-    mainAvatar.onclick = goHere();
+    mainAvatar.onclick = function() { goHere(); }
     mainAvatar.appendChild(createImage(icoProfile, 43, 42, "User avatar", ""));
     return mainAvatar;
 }
@@ -402,7 +402,7 @@ function doctorInfo(firstname, lastname, specialization, workplace) {
 }
 function doctorInfoButton(image, altText) {
     let docInfoButton = document.createElement("button");
-    docInfoButton.onclick = goHere();
+    docInfoButton.onclick = function() { goHere(); }
     docInfoButton.appendChild(createImage(image, 35, 35, altText, ""));
     return docInfoButton;
 }  

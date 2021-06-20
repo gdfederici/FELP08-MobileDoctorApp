@@ -49,7 +49,7 @@ h3 {
 .navbar-menu {
     display: block;
     min-width: 200px;
-    line-height: 42px;
+    line-height: 42px;;
 }
 .navbar-menu a {
     display: none;
@@ -57,8 +57,9 @@ h3 {
 .navbar-menu a.icon {
     display: block;
 }
-.navbar-menu__responsive a{
-    display: block;
+.navbar-menu__responsive a {
+    display: flex;
+    z-index: 10;
 }
 
 /*** SCREEN READER ***/
@@ -146,23 +147,22 @@ h3 {
     display: flex;
     justify-content: space-between;
     padding: 30px 25px;
+    &-menu {
+        display: block;
+        min-width: 200px;
+        line-height: 42px;
+        text-align: right;
+        & a {
+            display: none;
+        }
+        & a.icon {
+            display: block;
+        }
+        &__responsive a{
+            display: block;
+        }
+    }
 }
-.navdoc-menu {
-    display: block;
-    min-width: 200px;
-    line-height: 42px;
-    text-align: right;
-}
-.navdoc-menu a {
-    display: none;
-}
-.navdoc-menu a.icon {
-    display: block;
-}
-.navdoc-menu__responsive a{
-    display: block;
-}
-
 .doctor {
     &-header {
         display: flex;
