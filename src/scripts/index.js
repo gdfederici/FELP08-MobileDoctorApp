@@ -24,8 +24,8 @@ class Doctor {
     constructor(firstname, lastname, avatarbig, avatarsmall, specialization, workplace, about) {
         this.firstname = firstname;
         this.lastname = lastname;
-        this.avatarbig = avatarbig;
-        this.avatarsmall = avatarsmall;
+        this.avatarbig = "img/" + avatarbig;
+        this.avatarsmall = "img/" + avatarsmall;
         this.specialization = specialization;
         this.workplace = workplace;
         this.about = about;
@@ -67,7 +67,7 @@ function createImage(imgSrc, imgWidth, imgHeight, imgAlt, imgClass) {
     //let newImage = document.createElement("img");
     const newImage = new Image();
     newImage.className = imgClass;
-    newImage.src = "img/" + imgSrc;
+    newImage.src = imgSrc;
     newImage.width = imgWidth;
     newImage.height = imgHeight;
     newImage.loading = "lazy";
@@ -75,7 +75,7 @@ function createImage(imgSrc, imgWidth, imgHeight, imgAlt, imgClass) {
     return newImage;
 }
 
-// IT_ Crea l'elemento titolo nella pagina Main. | EN_ 
+// IT_ Crea un semplice contenuto testuale (titolo o paragrafo) a cui non devono essere applicati classi o altro. | EN_ 
 function createSimpleContent(tag, text) {
     let isContent = document.createElement(tag);
     isContent.appendChild(document.createTextNode(text));
@@ -131,7 +131,7 @@ function createPageMain(servicesList, medicalStaff) {
     document.getElementById("content").innerHTML = "";
     let pageMain = document.createElement("section");
     pageMain.setAttribute("id", "page-main");
-    pageMain.className = "page page-main page__show";
+    pageMain.className = "page page-main";
     pageMain.appendChild(pageMainHeader());
     pageMain.appendChild(pageMainFind());
     pageMain.appendChild(pageMainCategories(servicesList));
@@ -162,7 +162,7 @@ function mainNavSpecial() {
     mainNavSpecialLink.className = "icon";
     mainNavSpecialLink.href = "javascript:void(0);"
     mainNavSpecialLink.onclick = magicHamMenu();
-    mainNavSpecialLink.appendChild(createImage("ico_menu.svg", 27, 11, "Hamburger menu icon", ""));
+    mainNavSpecialLink.appendChild(createImage(icoMenuHam, 27, 11, "Hamburger menu icon", ""));
     mainNavSpecialItem.appendChild(mainNavSpecialLink);
     return mainNavSpecialItem;
 }
@@ -180,7 +180,7 @@ function pageMainAvatar() {
     let mainAvatar = document.createElement("a");
     mainAvatar.href = "javascript:void(0);"
     mainAvatar.onclick = goHere();
-    mainAvatar.appendChild(createImage("ico_profile.svg", 43, 42, "User avatar", ""));
+    mainAvatar.appendChild(createImage(icoProfile, 43, 42, "User avatar", ""));
     return mainAvatar;
 }
 
@@ -284,7 +284,6 @@ function pageMainDoctors(doctorsToShow) {
     let mainDoctors = document.createElement("div");
     mainDoctors.setAttribute("id", "doctors");
     mainDoctors.className = "doctors";
-    //mainDoctors.appendChild(createPMainTitle("Top Doctors"));
     mainDoctors.appendChild(createSimpleContent("h3", "Top Doctors"));
     let docList = document.createElement("div");
     docList.setAttribute("id", "doclist");

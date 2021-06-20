@@ -97,6 +97,7 @@ h3 {
         display: flex;
         justify-content: flex-start;
         overflow-x: auto;
+        overflow-y: hidden;
         padding-top: 14px;
         & li {
             display: block;
