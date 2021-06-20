@@ -344,7 +344,7 @@ function createPageDoctor(firstname, lastname, avatarbig, specialization, workpl
     pageDoctor.appendChild(pageDoctorNavbar());
     pageDoctor.appendChild(pageDoctorHeader(firstname, lastname, avatarbig, specialization, workplace));
     pageDoctor.appendChild(pageDoctorAbout(about));
-    //pageDoctor.appendChild(pageDoctorSchedules());
+    pageDoctor.appendChild(pageDoctorSchedules());
     return pageDoctor;
 }
 function pageDoctorNavbar() {
@@ -427,6 +427,19 @@ function pageDoctorAbout(about) {
     doctorAboutText.appendChild(document.createTextNode(about));
     doctorAbout.appendChild(doctorAboutText);
     return doctorAbout;
+}
+
+function pageDoctorSchedules() {
+    let doctorSchedules = document.createElement("div");
+    doctorSchedules.className = "doctor-schedules";
+    let doctorSchedulesTitle = document.createElement("h3");
+    doctorSchedulesTitle.appendChild(document.createTextNode("Upcoming Schedules"));
+    doctorSchedules.appendChild(doctorSchedulesTitle);
+    doctorSchedules.appendChild(createSchedules());
+    return doctorSchedules;
+}
+function createSchedules() {
+    
 }
 
 
