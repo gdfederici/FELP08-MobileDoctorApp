@@ -8,24 +8,19 @@ import icoBack from '../img/ico_Back.svg';
 import icoPhone from '../img/ico_phone.svg';
 import icoMsg from '../img/ico_msg.svg';
 import icoVideo from '../img/ico_video.svg';
-import imgDocSmall1 from '../img/doc-small_1.svg';
-import imgDocSmall2 from '../img/doc-small_2.svg';
-import imgDocSmall3 from '../img/doc-small_3.svg';
-import imgDocBig1 from '../img/doc-big_1.webp';
-import imgDocBig2 from '../img/doc-big_2.webp';
-import imgDocBig3 from '../img/doc-big_3.webp';
-
+import imgDoc1 from '../img/doc-avatar_1.svg';
+import imgDoc2 from '../img/doc-avatar_2.svg';
+import imgDoc3 from '../img/doc-avatar_3.svg';
 
 
 /*** ------------------------- *** ------------------------- *** ------------------------- *** ------------------------- ***/
 
 // IT_ Classe singolo dottore. | EN_ 
 class Doctor {
-    constructor(firstname, lastname, avatarbig, avatarsmall, specialization, workplace, about) {
+    constructor(firstname, lastname, avatar, specialization, workplace, about) {
         this.firstname = firstname;
         this.lastname = lastname;
-        this.avatarbig = "img/" + avatarbig;
-        this.avatarsmall = "img/" + avatarsmall;
+        this.avatar = "img/" + avatar;
         this.specialization = specialization;
         this.workplace = workplace;
         this.about = about;
@@ -37,7 +32,7 @@ function createMedicalStaff() {
     const listDoctorsLength = listDoctors.length;
     let medicalStaff = [];
     for (let i=0; i<listDoctorsLength; i++) {
-        medicalStaff.push(new Doctor(listDoctors[i].firstname, listDoctors[i].lastname, listDoctors[i].avatarbig, listDoctors[i].avatarsmall, listDoctors[i].specialization, listDoctors[i].workplace, listDoctors[i].about));
+        medicalStaff.push(new Doctor(listDoctors[i].firstname, listDoctors[i].lastname, listDoctors[i].avatar, listDoctors[i].specialization, listDoctors[i].workplace, listDoctors[i].about));
     }
     return medicalStaff;
 }
@@ -90,8 +85,8 @@ function goMain(servicesList, medicalStaff) {
     document.getElementById("content").appendChild(createPageMain(servicesList, medicalStaff));
 }
 
-function goDoctor(firstname, lastname, avatarbig, specialization, workplace, about) {
-    document.getElementById("content").appendChild(createPageDoctor(firstname, lastname, avatarbig, specialization, workplace, about));
+function goDoctor(firstname, lastname, avatar, specialization, workplace, about) {
+    document.getElementById("content").appendChild(createPageDoctor(firstname, lastname, avatar, specialization, workplace, about));
 }
 
 /*** ------------------------- *** ------------------------- *** ------------------------- *** ------------------------- ***/
@@ -308,8 +303,8 @@ function createDoctorsItem(doctorToShow, pos) {
     let doctorsItem = document.createElement("li");
     let doctorsLink = document.createElement("button");
     doctorsLink.className = "doctors-box doctors-box__" + (num);
-    doctorsLink.onclick = function() { goDoctor(doctorToShow.firstname, doctorToShow.lastname, doctorToShow.avatarbig, doctorToShow.specialization, doctorToShow.workplace, doctorToShow.about); };
-    doctorsLink.appendChild(createImage(doctorToShow.avatarsmall, 54, 66, "Avatar Doctor", ""));
+    doctorsLink.onclick = function() { goDoctor(doctorToShow.firstname, doctorToShow.lastname, doctorToShow.avatar, doctorToShow.specialization, doctorToShow.workplace, doctorToShow.about); };
+    doctorsLink.appendChild(createImage(doctorToShow.avatar, 54, 66, "Avatar Doctor", ""));
     let doctorsInfo = document.createElement("div");
     doctorsInfo.appendChild(createSimpleContent("h5", "Dr. " + doctorToShow.firstname + " " + doctorToShow.lastname));
     doctorsInfo.appendChild(createSimpleContent("p", doctorToShow.specialization + " - " + doctorToShow.workplace));
@@ -322,13 +317,13 @@ function createDoctorsItem(doctorToShow, pos) {
 /*** ------------------------- *** ------------------------- *** ------------------------- *** ------------------------- ***/
 
 
-function createPageDoctor(firstname, lastname, avatarbig, specialization, workplace, about) {
+function createPageDoctor(firstname, lastname, avatar, specialization, workplace, about) {
     document.getElementById("content").innerHTML = "";
     let pageDoctor = document.createElement("section");
     pageDoctor.setAttribute("id", "page-doctor");
     pageDoctor.className = "page page-doctor";
     pageDoctor.appendChild(pageDoctorNavbar());
-    pageDoctor.appendChild(pageDoctorHeader(firstname, lastname, avatarbig, specialization, workplace));
+    pageDoctor.appendChild(pageDoctorHeader(firstname, lastname, avatar, specialization, workplace));
     pageDoctor.appendChild(pageDoctorAbout(about));
     pageDoctor.appendChild(pageDoctorSchedules());
     return pageDoctor;
@@ -379,10 +374,10 @@ function doctorNavLink() {
 function magicPointsMenu() {
     document.getElementById("pointsNav").classList.toggle("navdoc-menu__responsive"); //IT_ Aggiunge/rimuove la classe per la visualizzazione del menu. | EN_ Add/remove the class for the menu display.
 }
-function pageDoctorHeader(firstname, lastname, avatarbig, specialization, workplace) {
+function pageDoctorHeader(firstname, lastname, avatar, specialization, workplace) {
     let doctorHeader = document.createElement("header");
     doctorHeader.className = "doctor-header";
-    doctorHeader.appendChild(createImage(avatarbig, 88, 107, "Avatar doctor", ""));
+    doctorHeader.appendChild(createImage(avatar, 88, 107, "Avatar doctor", ""));
     doctorHeader.appendChild(doctorInfo(firstname, lastname, specialization, workplace));
     return doctorHeader;
 }
