@@ -67,9 +67,9 @@ h1, h2, h3, h4, h5 {
 
 .categories {
     &-box {
-        &__1 { background: url(../img/cat_dental.svg) no-repeat; }
-        &__2 { background: url(../img/cat_heart.svg) no-repeat; }
-        &__3 { background: url(../img/cat_eye.svg) no-repeat; }
+        &__1 { background: url("../img/cat_dental.svg") no-repeat; }
+        &__2 { background: url("../img/cat_heart.svg") no-repeat; }
+        &__3 { background: url("../img/cat_eye.svg") no-repeat; }
         &-button {
             background-color: #ffffff;
         }
@@ -89,7 +89,7 @@ h1, h2, h3, h4, h5 {
 .page-doctor { 
     background: $color-back;
     &-navbar {
-        background: url(../img/back_doc.svg) no-repeat;
+        background: url("../img/back_doc.svg") no-repeat;
     }
 }
 
