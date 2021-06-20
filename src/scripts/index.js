@@ -220,7 +220,6 @@ function pageMainCategories(servicesList) {
     let mainCategories = document.createElement("div");
     mainCategories.setAttribute("id", "categories");
     mainCategories.className = "categories";
-    //mainCategories.appendChild(createPMainTitle("Categories"));
     mainCategories.appendChild(createSimpleContent("h3", "Categories"));
     mainCategories.appendChild(createCategoriesList(servicesList));
     return mainCategories;
@@ -306,7 +305,6 @@ function createDoctorsItem(doctorToShow, pos) {
     let doctorsItem = document.createElement("li");
     let doctorsLink = document.createElement("button");
     doctorsLink.className = "doctors-box doctors-box__" + (num);
-    //doctorsLink.href = "#";
     doctorsLink.onclick = function() { goDoctor(doctorToShow.firstname, doctorToShow.lastname, doctorToShow.avatarbig, doctorToShow.specialization, doctorToShow.workplace, doctorToShow.about); };
     doctorsLink.appendChild(createImage(doctorToShow.avatarsmall, 54, 66, "Avatar Doctor", ""));
     let doctorsInfo = document.createElement("div");
@@ -342,7 +340,10 @@ function pageDoctorNavbar() {
     let navDoc = document.createElement("div");
     navDoc.className = "navdoc";
     let navBack = document.createElement("div");
-    navBack.appendChild(createImage("ico_back.svg", 11, 15, "Back icon", ""));
+    let navBackLink = document.createElement("a");
+    navBackLink.onclick = function() { goMain(servicesList, medicalStaff); }
+    navBackLink.appendChild(createImage(icoBack, 11, 15, "Back icon", ""));
+    navBack.appendChild(navBackLink);
     navDoc.appendChild(navBack);
     navDoc.appendChild(pageDoctorNav());
     pageDoctorNavbar.appendChild(navDoc);
@@ -363,21 +364,22 @@ function doctorNavSpecial() {
     let doctorNavSpecialLink = document.createElement("a");
     doctorNavSpecialLink.setAttribute("id", "pointsMenu");
     doctorNavSpecialLink.className = "icon";
-    doctorNavSpecialLink.href = "javascript:void(0);"
-    doctorNavSpecialLink.onclick = magicPointsMenu();
-    doctorNavSpecialLink.appendChild(createImage("ico_points.svg", 5, 16, "Three points menu icon", ""));
+    doctorNavSpecialLink.onclick = function() { magicPointsMenu(); }
+    doctorNavSpecialLink.appendChild(createImage(icoMenuPoints, 5, 16, "Three points menu icon", ""));
     doctorNavSpecialItem.appendChild(doctorNavSpecialLink);
     return doctorNavSpecialItem;
 }
 function doctorNavLink() {
     let doctorNavItem = document.createElement("li");
     let doctorNavLink = document.createElement("a");
-    doctorNavLink.href = "javascript:void(0);"
+    doctorNavLink.appendChild(document.createTextNode("link"));
+    doctorNavLink.onclick = function() { goHere(); }
     doctorNavItem.appendChild(doctorNavLink);
     return doctorNavItem;
 }
 function magicPointsMenu() {
-
+    console.log("try");
+    document.getElementById("pointsNav").classList.toggle("navdoc-menu__responsive"); //IT_ Aggiunge/rimuove la classe per la visualizzazione del menu. | EN_ Add/remove the class for the menu display.
 }
 function pageDoctorHeader(firstname, lastname, avatarbig, specialization, workplace) {
     let doctorHeader = document.createElement("header");

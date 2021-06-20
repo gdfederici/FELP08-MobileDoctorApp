@@ -90,6 +90,13 @@ h1, h2, h3, h4, h5 {
         background: url(../img/back_doc.svg) no-repeat;
     }
 }
+.navdoc {
+    &-menu {
+        &__responsive a {
+            color: #ffffff;
+        }
+    }
+}
 .doctor {
     &-header {
         background: $color-back;

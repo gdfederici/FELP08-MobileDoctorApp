@@ -137,6 +137,13 @@ h5 { @include alltext($family: $font-h, $weight: $font_bold, $size: $font-size-h
 
 
 /*** PAGE SINGLE DOCTOR ***/
+.navdoc {
+    &-menu {
+        &__responsive a {
+            font-weight: $font_bold;
+        }
+    }
+}
 .doctor {
     &-about {
         & p {
