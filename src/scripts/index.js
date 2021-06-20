@@ -28,9 +28,6 @@ class Doctor {
         this.avatarsmall = avatarsmall;
         this.specialization = specialization;
         this.workplace = workplace;
-        this. phonenumber = phonenumber;
-        this.msgnumber = msgnumber;
-        this.videolink = videolink;
         this.about = about;
     }
 }
@@ -40,7 +37,7 @@ function createMedicalStaff() {
     const listDoctorsLength = listDoctors.length;
     let medicalStaff = [];
     for (let i=0; i<listDoctorsLength; i++) {
-        medicalStaff.push(new Doctor(listDoctors[i].firstname, listDoctors[i].lastname, listDoctors[i].avatarbig, listDoctors[i].avatarsmall, listDoctors[i].specialization, listDoctors[i].workplace, listDoctors[i].phonenumber, listDoctors[i].msgnumber, listDoctors[i].videolink, listDoctors[i].about));
+        medicalStaff.push(new Doctor(listDoctors[i].firstname, listDoctors[i].lastname, listDoctors[i].avatarbig, listDoctors[i].avatarsmall, listDoctors[i].specialization, listDoctors[i].workplace, listDoctors[i].about));
     }
     return medicalStaff;
 }
@@ -317,7 +314,7 @@ function createDoctorsItem(doctorToShow, pos) {
     let doctorsLink = document.createElement("button");
     doctorsLink.className = "doctors-box doctors-box__" + (num);
     //doctorsLink.href = "#";
-    doctorsLink.onclick = function() { goDoctor(doctorToShow.firstname, doctorToShow.lastname, doctorToShow.avatarbig, doctorToShow.specialization, doctorToShow.workplace, doctorToShow.phonenumber, doctorToShow.msgnumber, doctorToShow.videolink, doctorToShow.about); };
+    doctorsLink.onclick = function() { goDoctor(doctorToShow.firstname, doctorToShow.lastname, doctorToShow.avatarbig, doctorToShow.specialization, doctorToShow.workplace, doctorToShow.about); };
     doctorsLink.appendChild(createImage(doctorToShow.avatarsmall, 54, 66, "Avatar Doctor", ""));
     let doctorsInfo = document.createElement("div");
     let doctorsInfoName = document.createElement("h5");
@@ -335,17 +332,17 @@ function createDoctorsItem(doctorToShow, pos) {
 /*** ------------------------- *** ------------------------- *** ------------------------- *** ------------------------- ***/
 
 
-function goDoctor(firstname, lastname, avatarbig, specialization, workplace, phonenumber, msgnumber, videolink, about) {
-    document.getElementById("content").appendChild(createPageDoctor(firstname, lastname, avatarbig, specialization, workplace, phonenumber, msgnumber, videolink, about));
+function goDoctor(firstname, lastname, avatarbig, specialization, workplace, about) {
+    document.getElementById("content").appendChild(createPageDoctor(firstname, lastname, avatarbig, specialization, workplace, about));
 }
 
-function createPageDoctor(firstname, lastname, avatarbig, specialization, workplace, phonenumber, msgnumber, videolink, about) {
+function createPageDoctor(firstname, lastname, avatarbig, specialization, workplace, about) {
     document.getElementById("content").innerHTML = "";
     let pageDoctor = document.createElement("section");
     pageDoctor.setAttribute("id", "page-doctor");
     pageDoctor.className = "page page-doctor";
     pageDoctor.appendChild(pageDoctorNavbar());
-    pageDoctor.appendChild(pageDoctorHeader(firstname, lastname, avatarbig, specialization, workplace, phonenumber, msgnumber, videolink));
+    pageDoctor.appendChild(pageDoctorHeader(firstname, lastname, avatarbig, specialization, workplace));
     //pageDoctor.appendChild(pageDoctorAbout(about));
     //pageDoctor.appendChild(pageDoctorSchedules());
     return pageDoctor;
@@ -393,14 +390,14 @@ function doctorNavLink() {
 function magicPointsMenu() {
 
 }
-function pageDoctorHeader(firstname, lastname, avatarbig, specialization, workplace, phonenumber, msgnumber, videolink) {
+function pageDoctorHeader(firstname, lastname, avatarbig, specialization, workplace) {
     let doctorHeader = document.createElement("header");
     doctorHeader.className = "doctor-header";
     doctorHeader.appendChild(createImage(avatarbig, 88, 107, "Avatar doctor", ""));
-    doctorHeader.appendChild(doctorInfo(firstname, lastname, specialization, workplace, phonenumber, msgnumber, videolink));
+    doctorHeader.appendChild(doctorInfo(firstname, lastname, specialization, workplace));
     return doctorHeader;
 }
-function doctorInfo(firstname, lastname, specialization, workplace, phonenumber, msgnumber, videolink) {
+function doctorInfo(firstname, lastname, specialization, workplace) {
     let doctorInfo = document.createElement("div");
     doctorInfo.className = "doctor-info";
     let doctorInfoTitle = document.createElement("h2");
