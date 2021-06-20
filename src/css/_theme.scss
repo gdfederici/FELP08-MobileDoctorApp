@@ -78,9 +78,9 @@ h1, h2, h3, h4, h5 {
 
 .doctors {
     &-box {
-        &__1 { background: $color-theme_1a; }
-        &__2 { background: $color-theme_2a; }
-        &__3 { background: $color-theme_3a; }
+        &__1 { background-color: $color-theme_1a; }
+        &__2 { background-color: $color-theme_2a; }
+        &__3 { background-color: $color-theme_3a; }
     }
 }
 
@@ -103,24 +103,24 @@ h1, h2, h3, h4, h5 {
 
 .doctor {
     &-header {
-        background: $color-back;
+        background-color: $color-back;
     }
 }
 
 .schedule-box {
     &__typo1 {
-        background: $color-theme_1a;
+        background-color: $color-theme_1a;
     }
     &__typo2 {
-        background: $color-theme_2a;
+        background-color: $color-theme_2a;
     }
     &-calendar {
         &__typo1 {
-            background: $color-theme_1b;
+            background-color: $color-theme_1b;
             color: $color-theme_1c;
         }
         &__typo2 {
-            background: $color-theme_2b;
+            background-color: $color-theme_2b;
             color: $color-theme_2c;
         }
     }
