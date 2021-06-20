@@ -64,7 +64,6 @@ function createServiceList() {
 
 // IT_ Crea l'elemento immagine da inserire. | EN_ Create the image element to insert.
 function createImage(imgSrc, imgWidth, imgHeight, imgAlt, imgClass) {
-    //let newImage = document.createElement("img");
     const newImage = new Image();
     newImage.className = imgClass;
     newImage.src = imgSrc;
@@ -85,6 +84,14 @@ function createSimpleContent(tag, text) {
 // IT_ Simula collegamento #. | EN_
 function goHere() {
     console.log("Do nothing");
+}
+
+function goMain(servicesList, medicalStaff) {
+    document.getElementById("content").appendChild(createPageMain(servicesList, medicalStaff));
+}
+
+function goDoctor(firstname, lastname, avatarbig, specialization, workplace, about) {
+    document.getElementById("content").appendChild(createPageDoctor(firstname, lastname, avatarbig, specialization, workplace, about));
 }
 
 /*** ------------------------- *** ------------------------- *** ------------------------- *** ------------------------- ***/
@@ -119,10 +126,6 @@ function createPageIntro(servicesList, medicalStaff) {
     pageIntroButton.appendChild(document.createTextNode("Get started"));
     pageIntro.appendChild(pageIntroButton);
     return pageIntro;
-}
-
-function goMain(servicesList, medicalStaff) {
-    document.getElementById("content").appendChild(createPageMain(servicesList, medicalStaff));
 }
 
 /*** ------------------------- *** ------------------------- *** ------------------------- *** ------------------------- ***/
@@ -319,10 +322,6 @@ function createDoctorsItem(doctorToShow, pos) {
 /*** ------------------------- *** ------------------------- *** ------------------------- *** ------------------------- ***/
 
 
-function goDoctor(firstname, lastname, avatarbig, specialization, workplace, about) {
-    document.getElementById("content").appendChild(createPageDoctor(firstname, lastname, avatarbig, specialization, workplace, about));
-}
-
 function createPageDoctor(firstname, lastname, avatarbig, specialization, workplace, about) {
     document.getElementById("content").innerHTML = "";
     let pageDoctor = document.createElement("section");
@@ -378,7 +377,6 @@ function doctorNavLink() {
     return doctorNavItem;
 }
 function magicPointsMenu() {
-    console.log("try");
     document.getElementById("pointsNav").classList.toggle("navdoc-menu__responsive"); //IT_ Aggiunge/rimuove la classe per la visualizzazione del menu. | EN_ Add/remove the class for the menu display.
 }
 function pageDoctorHeader(firstname, lastname, avatarbig, specialization, workplace) {
@@ -397,16 +395,16 @@ function doctorInfo(firstname, lastname, specialization, workplace) {
     let doctorInfoText = document.createElement("p");
     doctorInfoText.appendChild(document.createTextNode(specialization + " - " + workplace));
     doctorInfo.appendChild(doctorInfoText);
-    doctorInfo.appendChild(doctorInfoButton("ico_phone.svg", "Phone to doctor"));
-    doctorInfo.appendChild(doctorInfoButton("ico_msg.svg", "Message to doctor"));
-    doctorInfo.appendChild(doctorInfoButton("ico_video.svg", "Video to doctor"));
+    doctorInfo.appendChild(doctorInfoLink(icoPhone, "Phone to doctor"));
+    doctorInfo.appendChild(doctorInfoLink(icoMsg, "Message to doctor"));
+    doctorInfo.appendChild(doctorInfoLink(icoVideo, "Video to doctor"));
     return doctorInfo;
 }
-function doctorInfoButton(image, altText) {
-    let docInfoButton = document.createElement("button");
-    docInfoButton.onclick = function() { goHere(); }
-    docInfoButton.appendChild(createImage(image, 35, 35, altText, ""));
-    return docInfoButton;
+function doctorInfoLink(image, altText) {
+    let docInfoLink = document.createElement("a");
+    docInfoLink.onclick = function() { goHere(); }
+    docInfoLink.appendChild(createImage(image, 35, 35, altText, ""));
+    return docInfoLink;
 }  
 function pageDoctorAbout(about) {
     let doctorAbout = document.createElement("div");

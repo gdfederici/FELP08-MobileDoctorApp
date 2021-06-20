@@ -129,6 +129,7 @@ h5 { @include alltext($family: $font-h, $weight: $font_bold, $size: $font-size-h
         text-decoration: none;
     }
 }
+
 .doctors {
     &-box {
         text-decoration: none;
@@ -144,6 +145,7 @@ h5 { @include alltext($family: $font-h, $weight: $font_bold, $size: $font-size-h
         }
     }
 }
+
 .doctor {
     &-about {
         & p {
@@ -151,6 +153,7 @@ h5 { @include alltext($family: $font-h, $weight: $font_bold, $size: $font-size-h
         }
     }
 }
+
 .schedule-box {
     &-calendar {
         font-size: $font-size_s;

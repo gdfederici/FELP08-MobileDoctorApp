@@ -64,6 +64,7 @@ h1, h2, h3, h4, h5 {
         background-color: $color-back_button2;
     }
 }
+
 .categories {
     &-box {
         &__1 { background: url(../img/cat_dental.svg) no-repeat; }
@@ -74,6 +75,7 @@ h1, h2, h3, h4, h5 {
         }
     }
 }
+
 .doctors {
     &-box {
         &__1 { background: $color-theme_1a; }
@@ -90,6 +92,7 @@ h1, h2, h3, h4, h5 {
         background: url(../img/back_doc.svg) no-repeat;
     }
 }
+
 .navdoc {
     &-menu {
         &__responsive a {
@@ -97,11 +100,13 @@ h1, h2, h3, h4, h5 {
         }
     }
 }
+
 .doctor {
     &-header {
         background: $color-back;
     }
 }
+
 .schedule-box {
     &__typo1 {
         background: $color-theme_1a;
