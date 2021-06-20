@@ -1,8 +1,10 @@
+// IT_ Importare funzioni. | EN_ Import functions.
 import { createSimpleContent } from './functions';
 import { goMain } from './functions';
 
 /*** ------------------------- *** ------------------------- *** ------------------------- *** ------------------------- ***/
 
+// IT_ Cancella il contenuto e crea la pagina introduttiva. | EN_ Clear the content and create the introduction page.
 export function pageIntro(servicesList, medicalStaff) {
     document.getElementById("content").innerHTML = "";
     document.getElementById("content").appendChild(createPageIntro(servicesList, medicalStaff));
@@ -10,7 +12,7 @@ export function pageIntro(servicesList, medicalStaff) {
 function createPageIntro(servicesList, medicalStaff) {
     let pageIntro = document.createElement("section");
     pageIntro.setAttribute("id", "page-intro");
-    pageIntro.className = "page page-intro page__show";
+    pageIntro.className = "page page-intro";
     pageIntro.appendChild(createSimpleContent("h1", "Choose the doctor you want"));
     pageIntro.appendChild(createSimpleContent("p", "Lorem ipsum dolor amet, consectetur adipiscing inet deli"));
     let pageIntroButton = document.createElement("button");
