@@ -1,12 +1,13 @@
 // IT_ Importare funzioni. | EN_ Import functions.
 import { createSimpleContent } from './functions';
+import { tabulaRasa } from './functions';
 import { goMain } from './functions';
 
 /*** ------------------------- *** ------------------------- *** ------------------------- *** ------------------------- ***/
 
 // IT_ Cancella il contenuto e crea la pagina introduttiva. | EN_ Clear the content and create the introduction page.
 export function pageIntro(servicesList, medicalStaff) {
-    document.getElementById("content").innerHTML = "";
+    tabulaRasa("content");
     document.getElementById("content").appendChild(createPageIntro(servicesList, medicalStaff));
 }
 function createPageIntro(servicesList, medicalStaff) {

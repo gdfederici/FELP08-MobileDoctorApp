@@ -1,6 +1,9 @@
 // IT_ Importare funzioni. | EN_ Import functions.
 import { createImage } from './functions';
 import { createSimpleContent } from './functions';
+import { tabulaRasa } from './functions';
+import { magicMenu } from './functions';
+import { createLink } from './functions';
 import { goHere } from './functions';
 import { goMain } from './functions';
 // IT_ Importare immagini. | EN_ Import images.
@@ -14,7 +17,7 @@ import icoVideo from '../img/ico_video.svg';
 
 // IT_ Cancella il contenuto e crea la pagina del singolo dottore. | EN_ Erase the content and create the single doctor page.
 export function createPageDoctor(firstname, lastname, avatar, specialization, workplace, about, servicesList, medicalStaff) {
-    document.getElementById("content").innerHTML = "";
+    tabulaRasa("content");
     const pageDoctor = document.createElement("section");
     pageDoctor.setAttribute("id", "page-doctor");
     pageDoctor.className = "page page-doctor";
@@ -41,13 +44,14 @@ function pageDoctorNavbar(servicesList, medicalStaff) {
     pageDoctorNavbar.appendChild(navDoc);
     return pageDoctorNavbar;
 }
+// IT_ Il menu mobile. | EN_ Mobile menu.
 function pageDoctorNav() {
     const doctorNav = document.createElement("nav");
     doctorNav.setAttribute("id", "pointsNav");
     doctorNav.className = "navdoc-menu";
     const doctorNavMenu = document.createElement("ul");
     doctorNavMenu.appendChild(doctorNavSpecial());
-    for (let i=0; i<3; i++) { doctorNavMenu.appendChild(doctorNavLink()); }
+    for (let i=0; i<3; i++) { doctorNavMenu.appendChild(createLink()); }
     doctorNav.appendChild(doctorNavMenu);
     return doctorNav;
 }
@@ -57,23 +61,10 @@ function doctorNavSpecial() {
     const doctorNavSpecialLink = document.createElement("a");
     doctorNavSpecialLink.setAttribute("id", "pointsMenu");
     doctorNavSpecialLink.className = "icon";
-    doctorNavSpecialLink.onclick = function() { magicPointsMenu(); }
+    doctorNavSpecialLink.onclick = function() { magicMenu("pointsNav", "navdoc-menu__responsive"); }
     doctorNavSpecialLink.appendChild(createImage(icoMenuPoints, 5, 16, "Three points menu icon"));
     doctorNavSpecialItem.appendChild(doctorNavSpecialLink);
     return doctorNavSpecialItem;
-}
-// IT_ Link vuoti per simulazione nell'esercizio. | EN_ Empty links for simulation in the exercise.
-function doctorNavLink() {
-    const doctorNavItem = document.createElement("li");
-    const doctorNavLink = document.createElement("a");
-    doctorNavLink.appendChild(document.createTextNode("link"));
-    doctorNavLink.onclick = function() { goHere(); }
-    doctorNavItem.appendChild(doctorNavLink);
-    return doctorNavItem;
-}
-// IT_ Mostra/nasconde il menu esteso. | EN_ Show/hide the extended menu.
-function magicPointsMenu() {
-    document.getElementById("pointsNav").classList.toggle("navdoc-menu__responsive"); //IT_ Aggiunge/rimuove la classe per la visualizzazione del menu. | EN_ Add/remove the class for the menu display.
 }
 
 // IT_ Crea la testata della pagina. | EN_ Create the page header.
@@ -87,12 +78,8 @@ function pageDoctorHeader(firstname, lastname, avatar, specialization, workplace
 function doctorInfo(firstname, lastname, specialization, workplace) {
     const doctorInfo = document.createElement("div");
     doctorInfo.className = "doctor-info";
-    const doctorInfoTitle = document.createElement("h2");
-    doctorInfoTitle.appendChild(document.createTextNode("Dr. " + firstname + " " + lastname));
-    doctorInfo.appendChild(doctorInfoTitle);
-    const doctorInfoText = document.createElement("p");
-    doctorInfoText.appendChild(document.createTextNode(specialization + " - " + workplace));
-    doctorInfo.appendChild(doctorInfoText);
+    doctorInfo.appendChild(createSimpleContent("h2", "Dr. " + firstname + " " + lastname));
+    doctorInfo.appendChild(createSimpleContent("p", specialization + " - " + workplace));
     doctorInfo.appendChild(doctorInfoLink(icoPhone, "Phone to doctor"));
     doctorInfo.appendChild(doctorInfoLink(icoMsg, "Message to doctor"));
     doctorInfo.appendChild(doctorInfoLink(icoVideo, "Video to doctor"));

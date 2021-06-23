@@ -1,6 +1,9 @@
 // IT_ Importare funzioni. | EN_ Import functions.
 import { createImage } from './functions';
 import { createSimpleContent } from './functions';
+import { tabulaRasa } from './functions';
+import { magicMenu } from './functions';
+import { createLink } from './functions';
 import { goHere } from './functions';
 import { goDoctor } from './functions';
 // IT_ Importare immagini. | EN_ Import images.
@@ -11,7 +14,7 @@ import icoProfile from '../img/ico_profile.svg';
 
 // IT_ Cancella il contenuto e crea la pagina principale con la lista completa dei dottori. | EN_ Clear the content and create the main page with the complete list of doctors.
 export function createPageMain(servicesList, medicalStaff) {
-    document.getElementById("content").innerHTML = "";
+    tabulaRasa("content");
     const pageMain = document.createElement("section");
     pageMain.setAttribute("id", "page-main");
     pageMain.className = "page page-main";
@@ -36,7 +39,7 @@ function pageMainNav() {
     mainNav.className = "navbar-menu";
     const mainNavMenu = document.createElement("ul");
     mainNavMenu.appendChild(mainNavSpecial());
-    for (let i=0; i<3; i++) { mainNavMenu.appendChild(mainNavLink()); }
+    for (let i=0; i<3; i++) { mainNavMenu.appendChild(createLink()); }
     mainNav.appendChild(mainNavMenu);
     return mainNav;
 }
@@ -46,24 +49,13 @@ function mainNavSpecial() {
     const mainNavSpecialLink = document.createElement("a");
     mainNavSpecialLink.setAttribute("id", "hamburgerMenu");
     mainNavSpecialLink.className = "icon";
-    mainNavSpecialLink.onclick = function() { magicHamMenu(); }
+    mainNavSpecialLink.onclick = function() { magicMenu("hamburgerNav", "navbar-menu__responsive"); }
     mainNavSpecialLink.appendChild(createImage(icoMenuHam, 27, 11, "Hamburger menu icon"));
     mainNavSpecialItem.appendChild(mainNavSpecialLink);
     return mainNavSpecialItem;
 }
-// IT_ Link vuoti per simulazione nell'esercizio. | EN_ Empty links for simulation in the exercise.
-function mainNavLink() {
-    const mainNavItem = document.createElement("li");
-    const mainNavLink = document.createElement("a");
-    mainNavLink.appendChild(document.createTextNode("link"));
-    mainNavLink.onclick = function() { goHere(); }
-    mainNavItem.appendChild(mainNavLink);
-    return mainNavItem;
-}
-// IT_ Mostra/nasconde il menu esteso. | EN_ Show/hide the extended menu.
-function magicHamMenu() {
-    document.getElementById("hamburgerNav").classList.toggle("navbar-menu__responsive"); //IT_ Aggiunge/rimuove la classe per la visualizzazione del menu. | EN_ Add/remove the class for the menu display.
-}
+
+// IT_ Avatar utente. | EN_ User avatar.
 function pageMainAvatar() {
     const mainAvatar = document.createElement("a");
     mainAvatar.href = "javascript:void(0);"
@@ -90,17 +82,17 @@ function createMainForm(medicalStaff) {
     const mainFormInputLabel = document.createElement("label");
     mainFormInputLabel.className = "onlyscreenreader";
     mainFormInputLabel.htmlFor = "searchdoctors";
+    mainForm.appendChild(mainFormInputLabel);
     const mainFormInput = document.createElement("input");
     mainFormInput.setAttribute("id", "searchdoctors");
     mainFormInput.setAttribute("type", "text");
     mainFormInput.setAttribute("name", "searchdoctors");
     mainFormInput.setAttribute("placeholder", "Search for doctors");
     mainFormInput.setAttribute("required", "required");
+    mainForm.appendChild(mainFormInput);
     const mainFormSubmit = document.createElement("button");
     mainFormSubmit.className = "button button__typo1 button__search";
     mainFormSubmit.onclick = function() { createNameFilterDoctorsList(document.getElementById("searchdoctors").value.toLowerCase(), medicalStaff); };
-    mainForm.appendChild(mainFormInputLabel);
-    mainForm.appendChild(mainFormInput);
     mainForm.appendChild(mainFormSubmit);
     return mainForm;
 }
@@ -108,14 +100,11 @@ function createMainForm(medicalStaff) {
 // EN_ Text search function in doctors' names. If successful, it shows the results and the button to reset the search filters, otherwise just the button.
 function createNameFilterDoctorsList(name, medicalStaff) {
     let medicalFilter = medicalStaff.filter(Doctor => (Doctor.firstname + " " + Doctor.lastname).toLowerCase().indexOf(name) > -1); //IT_ Controlla la presenza della stringa nel nome+cognome del dottore, tutto in minuscolo. In caso di assenza restituisce -1 così prendiamo solo quelli che restituiscono valore superiore.
-    if ( medicalFilter === [] ) {
-        document.getElementById("doclist").innerHTML = ""; // IT_ Si cancella il contenuto. | EN_ The content is deleted.
-        document.getElementById("doclist").appendChild(resetButtonDoctors(medicalStaff)); // IT_ Si aggiunge il bottone di reset. | EN_ The reset button is added.
-    } else {
-        document.getElementById("doclist").innerHTML = ""; // IT_ Si cancella il contenuto. | EN_ The content is deleted.
+    tabulaRasa("doclist"); // IT_ Si cancella il contenuto. | EN_ The content is deleted.
+    if ( medicalFilter !== [] ) {
         document.getElementById("doclist").appendChild(createDoctorsList(medicalFilter)); // IT_ Si ricrea la lista con solo i dottori selezionati. | EN_ The list is recreated with only the selected doctors.
-        document.getElementById("doclist").appendChild(resetButtonDoctors(medicalStaff)); // IT_ Si aggiunge il bottone di reset. | EN_ The reset button is added.
     }
+    document.getElementById("doclist").appendChild(resetButtonDoctors(medicalStaff)); // IT_ Si aggiunge il bottone di reset. | EN_ The reset button is added.
 }
 
 // IT_ La sezione contenente la lista delle categorie. | EN_ The section containing the list of categories.
@@ -154,7 +143,7 @@ function createCategoriesItem(name, pos, medicalStaff) {
 // IT_ Funzione di filtro lista dottori per categoria di servizio. | EN_ Filter function for doctors list by service category.
 function createCatFilterDoctorsList(cat, medicalStaff) {
     let medicalFilter = medicalStaff.filter(Doctor => Doctor.specialization === cat); // IT_ Si filtra l'array prendendo solo quelli corrispondenti, che vanno a creare un nuovo array. | EN_ The array is filtered by taking only the matching ones, which create a new array.
-    document.getElementById("doclist").innerHTML = ""; // IT_ Si cancella il contenuto. | EN_ The content is deleted.
+    tabulaRasa("doclist"); // IT_ Si cancella il contenuto. | EN_ The content is deleted.
     document.getElementById("doclist").appendChild(createDoctorsList(medicalFilter)); // IT_ Si ricrea la lista con solo i dottori selezionati. | EN_ The list is recreated with only the selected doctors.
     document.getElementById("doclist").appendChild(resetButtonDoctors(medicalStaff)); // IT_ Si aggiunge il bottone di reset. | EN_ The reset button is added.
 }
@@ -168,10 +157,10 @@ function resetButtonDoctors(medicalStaff) {
     return resetButton;
 }
 function resetDoctorsList(medicalStaff) {
-    document.getElementById("searchblock").innerHTML = ""; // IT_ Si cancella il contenuto. | EN_ The content is deleted.
+    tabulaRasa("searchblock"); // IT_ Si cancella il contenuto. | EN_ The content is deleted.
     document.getElementById("searchblock").appendChild(createMainForm(medicalStaff)); // IT_ Si ricrea il form vuoto. | EN_ The empty form is recreated.
-    document.getElementById("doclist").innerHTML = ""; // IT_ Si cancella il contenuto. | EN_ The content is deleted.
-    document.getElementById("doclist").appendChild(createDoctorsList(medicalStaff)); // IT_ Si ricrea la lista con solo tutti i dottori. | EN_ Recreate the list with just all the doctors.
+    tabulaRasa("doclist"); // IT_ Si cancella il contenuto. | EN_ The content is deleted.
+    document.getElementById("doclist").appendChild(createDoctorsList(medicalStaff)); // IT_ Si ricrea la lista con tutti i dottori. | EN_ Recreate the list with all the doctors.
 }
 
 // IT_ La sezione contenente la lista dei dottori. | EN_ The section containing the list of doctors.

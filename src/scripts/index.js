@@ -2,9 +2,6 @@
 import '../css/style.scss';
 // IT_ Importare funzioni. | EN_ Import functions.
 import { pageIntro } from './page-intro';
-import { createImage } from './functions';
-import { createSimpleContent } from './functions';
-import { goHere } from './functions';
 // IT_ Importare dati. | EN_ Import data.
 import categoriesJson from './categories.json';
 import doctorsJson from './doctors.json';
