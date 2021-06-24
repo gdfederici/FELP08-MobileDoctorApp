@@ -2,6 +2,7 @@
 import '../css/style.scss';
 // IT_ Importare funzioni. | EN_ Import functions.
 import { pageIntro } from './page-intro';
+import { noDesktop } from './page-desktop';
 // IT_ Importare dati. | EN_ Import data.
 import categoriesJson from './categories.json';
 import doctorsJson from './doctors.json';
@@ -62,9 +63,11 @@ function isMobile() {
 /*** ------------------------- *** ------------------------- *** ------------------------- *** ------------------------- ***/
 
 // IT_ Viene mostrato in caso di accesso da desktop. | EN_ It is shown in case of desktop access.
+/*
 function noDesktop() {
     document.getElementById("content").innerHTML = "pippo";
 }
+*/
 
 /*** ------------------------- *** ------------------------- *** ------------------------- *** ------------------------- ***/
 

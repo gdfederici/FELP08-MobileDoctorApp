@@ -23,6 +23,19 @@ h3 {
 }
 
 
+/*** PAGE DESKTOP ***/
+.page-desktop {
+    margin: 50px auto;
+    & h1 {
+        max-width: 100%;
+        margin: 25px;
+    }
+    & p {
+        margin: 25px;
+    }
+}
+
+
 /*** PAGE INTRO ***/
 .page-intro {
     height: 712px;
