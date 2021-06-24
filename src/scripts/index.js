@@ -62,15 +62,6 @@ function isMobile() {
 
 /*** ------------------------- *** ------------------------- *** ------------------------- *** ------------------------- ***/
 
-// IT_ Viene mostrato in caso di accesso da desktop. | EN_ It is shown in case of desktop access.
-/*
-function noDesktop() {
-    document.getElementById("content").innerHTML = "pippo";
-}
-*/
-
-/*** ------------------------- *** ------------------------- *** ------------------------- *** ------------------------- ***/
-
 const medicalStaff = createMedicalStaff();
 Object.freeze(medicalStaff);
 const servicesList = createServiceList();
