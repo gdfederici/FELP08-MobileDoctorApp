@@ -2,7 +2,7 @@
 import { createImage, createSimpleContent, tabulaRasa, magicMenu, createLink, goHere, goMain } from './functions';
 // IT_ Importare immagini. | EN_ Import images.
 import icoMenuPoints from '../img/ico_points.svg';
-import icoBack from '../img/ico_Back.svg';
+import icoBack from '../img/ico_back.svg';
 import icoPhone from '../img/ico_phone.svg';
 import icoMsg from '../img/ico_msg.svg';
 import icoVideo from '../img/ico_video.svg';
