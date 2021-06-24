@@ -1,7 +1,5 @@
 // IT_ Importare funzioni. | EN_ Import functions.
-import { createSimpleContent } from './functions';
-import { tabulaRasa } from './functions';
-import { goMain } from './functions';
+import { createSimpleContent, tabulaRasa, goMain } from './functions';
 
 /*** ------------------------- *** ------------------------- *** ------------------------- *** ------------------------- ***/
 

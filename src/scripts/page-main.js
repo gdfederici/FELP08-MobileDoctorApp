@@ -1,11 +1,5 @@
 // IT_ Importare funzioni. | EN_ Import functions.
-import { createImage } from './functions';
-import { createSimpleContent } from './functions';
-import { tabulaRasa } from './functions';
-import { magicMenu } from './functions';
-import { createLink } from './functions';
-import { goHere } from './functions';
-import { goDoctor } from './functions';
+import { createImage, createSimpleContent, tabulaRasa, magicMenu, createLink, goHere, goDoctor } from './functions';
 // IT_ Importare immagini. | EN_ Import images.
 import icoMenuHam from '../img/ico_menu.svg';
 import icoProfile from '../img/ico_profile.svg';
@@ -99,7 +93,8 @@ function createMainForm(medicalStaff) {
 // IT_ Funzione di ricerca testuale nei nomi dei dottori. In caso di successo mostra i risultati e il bottone per resettare i filtri di ricerca, altrimenti solo il bottone.
 // EN_ Text search function in doctors' names. If successful, it shows the results and the button to reset the search filters, otherwise just the button.
 function createNameFilterDoctorsList(name, medicalStaff) {
-    let medicalFilter = medicalStaff.filter(Doctor => (Doctor.firstname + " " + Doctor.lastname).toLowerCase().indexOf(name) > -1); //IT_ Controlla la presenza della stringa nel nome+cognome del dottore, tutto in minuscolo. In caso di assenza restituisce -1 così prendiamo solo quelli che restituiscono valore superiore.
+    //let medicalFilter = medicalStaff.filter(Doctor => (Doctor.firstname + " " + Doctor.lastname).toLowerCase().indexOf(name) > -1); //IT_ Controlla la presenza della stringa nel nome+cognome del dottore, tutto in minuscolo. In caso di assenza restituisce -1 così prendiamo solo quelli che restituiscono valore superiore.
+    let medicalFilter = medicalStaff.filter(Doctor => (`${Doctor.firstname} ${Doctor.lastname}`).toLowerCase().indexOf(name) > -1); //IT_ Controlla la presenza della stringa nel nome+cognome del dottore, tutto in minuscolo. In caso di assenza restituisce -1 così prendiamo solo quelli che restituiscono valore superiore.
     tabulaRasa("doclist"); // IT_ Si cancella il contenuto. | EN_ The content is deleted.
     if ( medicalFilter !== [] ) {
         document.getElementById("doclist").appendChild(createDoctorsList(medicalFilter)); // IT_ Si ricrea la lista con solo i dottori selezionati. | EN_ The list is recreated with only the selected doctors.

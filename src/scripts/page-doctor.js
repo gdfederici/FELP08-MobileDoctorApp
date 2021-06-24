@@ -1,11 +1,5 @@
 // IT_ Importare funzioni. | EN_ Import functions.
-import { createImage } from './functions';
-import { createSimpleContent } from './functions';
-import { tabulaRasa } from './functions';
-import { magicMenu } from './functions';
-import { createLink } from './functions';
-import { goHere } from './functions';
-import { goMain } from './functions';
+import { createImage, createSimpleContent, tabulaRasa, magicMenu, createLink, goHere, goMain } from './functions';
 // IT_ Importare immagini. | EN_ Import images.
 import icoMenuPoints from '../img/ico_points.svg';
 import icoBack from '../img/ico_Back.svg';
@@ -78,8 +72,8 @@ function pageDoctorHeader(firstname, lastname, avatar, specialization, workplace
 function doctorInfo(firstname, lastname, specialization, workplace) {
     const doctorInfo = document.createElement("div");
     doctorInfo.className = "doctor-info";
-    doctorInfo.appendChild(createSimpleContent("h2", "Dr. " + firstname + " " + lastname));
-    doctorInfo.appendChild(createSimpleContent("p", specialization + " - " + workplace));
+    doctorInfo.appendChild(createSimpleContent("h2", `Dr. ${firstname} ${lastname}`)); // IT_ Stringa composte in ES6. | ENì_ String in ES6.
+    doctorInfo.appendChild(createSimpleContent("p", `${specialization} ${workplace}`));
     doctorInfo.appendChild(doctorInfoLink(icoPhone, "Phone to doctor"));
     doctorInfo.appendChild(doctorInfoLink(icoMsg, "Message to doctor"));
     doctorInfo.appendChild(doctorInfoLink(icoVideo, "Video to doctor"));

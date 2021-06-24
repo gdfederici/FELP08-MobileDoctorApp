@@ -27,7 +27,7 @@ class Doctor {
 function createMedicalStaff() {
     const listDoctors = doctorsJson.doctorsList;
     const listDoctorsLength = listDoctors.length;
-    const medicalStaff = [];
+    let medicalStaff = [];
     for (let i=0; i<listDoctorsLength; i++) {
         medicalStaff.push(new Doctor(listDoctors[i].firstname, listDoctors[i].lastname, listDoctors[i].avatar, listDoctors[i].specialization, listDoctors[i].workplace, listDoctors[i].about));
     }
@@ -45,7 +45,7 @@ class Service {
 function createServiceList() {
     const listCategories = categoriesJson.categoriesList;
     const listCategoriesLength = listCategories.length;
-    const servicesList = [];
+    let servicesList = [];
     for (let i=0; i<listCategoriesLength; i++) {
         servicesList.push(new Service(listCategories[i].name, listCategories[i].image));
     }
@@ -69,5 +69,7 @@ function noDesktop() {
 /*** ------------------------- *** ------------------------- *** ------------------------- *** ------------------------- ***/
 
 const medicalStaff = createMedicalStaff();
+Object.freeze(medicalStaff);
 const servicesList = createServiceList();
+Object.freeze(servicesList);
 isMobile() ? pageIntro(servicesList, medicalStaff) : noDesktop();
