@@ -13,7 +13,7 @@ export function createPageMain(servicesList, medicalStaff) {
     pageMain.setAttribute("id", "page-main");
     pageMain.className = "page page-main";
     pageMain.appendChild(pageMainHeader());
-    pageMain.appendChild(pageMainFind(medicalStaff));
+    pageMain.appendChild(pageMainFind(servicesList, medicalStaff));
     pageMain.appendChild(pageMainCategories(servicesList, medicalStaff));
     pageMain.appendChild(pageMainDoctors(medicalStaff, servicesList, medicalStaff));
     return pageMain;
@@ -59,16 +59,16 @@ function pageMainAvatar() {
 }
 
 // IT_ La sezione contenente il form di ricerca. | EN_ The section containing the search form.
-function pageMainFind(medicalStaff) {
+function pageMainFind(servicesList, medicalStaff) {
     const mainFinder = document.createElement("div");
     mainFinder.appendChild(createSimpleContent("h1", "Find your desired doctor"));
     const searchBlock = document.createElement("div");
     searchBlock.setAttribute("id", "searchblock");
-    searchBlock.appendChild(createMainForm(medicalStaff));
+    searchBlock.appendChild(createMainForm(servicesList, medicalStaff));
     mainFinder.appendChild(searchBlock);
     return mainFinder;
 }
-function createMainForm(medicalStaff) {
+function createMainForm(servicesList, medicalStaff) {
     const mainForm = document.createElement("form");
     mainForm.className = "search-form";
     //mainForm.action = "#";
@@ -86,20 +86,20 @@ function createMainForm(medicalStaff) {
     mainForm.appendChild(mainFormInput);
     const mainFormSubmit = document.createElement("button");
     mainFormSubmit.className = "button button__typo1 button__search";
-    mainFormSubmit.onclick = function() { createNameFilterDoctorsList(document.getElementById("searchdoctors").value.toLowerCase(), medicalStaff); };
+    mainFormSubmit.onclick = function() { createNameFilterDoctorsList(document.getElementById("searchdoctors").value.toLowerCase(), servicesList, medicalStaff); };
     mainForm.appendChild(mainFormSubmit);
     return mainForm;
 }
 // IT_ Funzione di ricerca testuale nei nomi dei dottori. In caso di successo mostra i risultati e il bottone per resettare i filtri di ricerca, altrimenti solo il bottone.
 // EN_ Text search function in doctors' names. If successful, it shows the results and the button to reset the search filters, otherwise just the button.
-function createNameFilterDoctorsList(name, medicalStaff) {
+function createNameFilterDoctorsList(name, servicesList, medicalStaff) {
     //let medicalFilter = medicalStaff.filter(Doctor => (Doctor.firstname + " " + Doctor.lastname).toLowerCase().indexOf(name) > -1); //IT_ Controlla la presenza della stringa nel nome+cognome del dottore, tutto in minuscolo. In caso di assenza restituisce -1 così prendiamo solo quelli che restituiscono valore superiore.
     let medicalFilter = medicalStaff.filter(Doctor => (`${Doctor.firstname} ${Doctor.lastname}`).toLowerCase().indexOf(name) > -1); //IT_ Controlla la presenza della stringa nel nome+cognome del dottore, tutto in minuscolo. In caso di assenza restituisce -1 così prendiamo solo quelli che restituiscono valore superiore.
     tabulaRasa("doclist"); // IT_ Si cancella il contenuto. | EN_ The content is deleted.
     if ( medicalFilter !== [] ) {
-        document.getElementById("doclist").appendChild(createDoctorsList(medicalFilter)); // IT_ Si ricrea la lista con solo i dottori selezionati. | EN_ The list is recreated with only the selected doctors.
+        document.getElementById("doclist").appendChild(createDoctorsList(medicalFilter, servicesList, medicalStaff)); // IT_ Si ricrea la lista con solo i dottori selezionati. | EN_ The list is recreated with only the selected doctors.
     }
-    document.getElementById("doclist").appendChild(resetButtonDoctors(medicalStaff)); // IT_ Si aggiunge il bottone di reset. | EN_ The reset button is added.
+    document.getElementById("doclist").appendChild(resetButtonDoctors(servicesList, medicalStaff)); // IT_ Si aggiunge il bottone di reset. | EN_ The reset button is added.
 }
 
 // IT_ La sezione contenente la lista delle categorie. | EN_ The section containing the list of categories.
@@ -117,17 +117,17 @@ function createCategoriesList(servicesList, medicalStaff) {
     const categoriesList = document.createElement("ul");
     categoriesList.className = "categories-boxes";
     for (let i=0; i<allCategories; i++) {
-        categoriesList.appendChild(createCategoriesItem(servicesList[i].catname, i, medicalStaff));
+        categoriesList.appendChild(createCategoriesItem(servicesList[i].catname, i, servicesList, medicalStaff));
     }
     return categoriesList;
 }
 // IT_ Crea singolo elemento della lista categorie. | EN_ Create single item of category list.
-function createCategoriesItem(name, pos, medicalStaff) {
+function createCategoriesItem(name, pos, servicesList, medicalStaff) {
     const categoriesItem = document.createElement("li");
     categoriesItem.className = "categories-box";
     const categoriesLink = document.createElement("button");
     categoriesLink.className = "categories-box-button";
-    categoriesLink.onclick = function() { createCatFilterDoctorsList(name, medicalStaff); };
+    categoriesLink.onclick = function() { createCatFilterDoctorsList(name, servicesList, medicalStaff); };
     const categoryBox = document.createElement("div");
     categoryBox.className = "categories-box__" + ((pos%3)+1); // IT_ Differenzia la classe CSS per i dettagli grafici. | EN_ Differentiate the CSS class for graphic details.
     categoriesLink.appendChild(categoryBox);
@@ -136,26 +136,26 @@ function createCategoriesItem(name, pos, medicalStaff) {
     return categoriesItem;
 }
 // IT_ Funzione di filtro lista dottori per categoria di servizio. | EN_ Filter function for doctors list by service category.
-function createCatFilterDoctorsList(cat, medicalStaff) {
+function createCatFilterDoctorsList(cat, servicesList, medicalStaff) {
     let medicalFilter = medicalStaff.filter(Doctor => Doctor.specialization === cat); // IT_ Si filtra l'array prendendo solo quelli corrispondenti, che vanno a creare un nuovo array. | EN_ The array is filtered by taking only the matching ones, which create a new array.
     tabulaRasa("doclist"); // IT_ Si cancella il contenuto. | EN_ The content is deleted.
-    document.getElementById("doclist").appendChild(createDoctorsList(medicalFilter)); // IT_ Si ricrea la lista con solo i dottori selezionati. | EN_ The list is recreated with only the selected doctors.
-    document.getElementById("doclist").appendChild(resetButtonDoctors(medicalStaff)); // IT_ Si aggiunge il bottone di reset. | EN_ The reset button is added.
+    document.getElementById("doclist").appendChild(createDoctorsList(medicalFilter, servicesList, medicalStaff)); // IT_ Si ricrea la lista con solo i dottori selezionati. | EN_ The list is recreated with only the selected doctors.
+    document.getElementById("doclist").appendChild(resetButtonDoctors(servicesList, medicalStaff)); // IT_ Si aggiunge il bottone di reset. | EN_ The reset button is added.
 }
 
 // IT_ Aggiungo un bottone per resettare il filtro di selezione. | EN_ Add a button to reset the selection filter.
-function resetButtonDoctors(medicalStaff) {
+function resetButtonDoctors(servicesList, medicalStaff) {
     const resetButton = document.createElement("button");
     resetButton.className = "button button__typo1 button__reset";
-    resetButton.onclick = function() { resetDoctorsList(medicalStaff); };
+    resetButton.onclick = function() { resetDoctorsList(servicesList, medicalStaff); };
     resetButton.appendChild(document.createTextNode("Reset Filters"));
     return resetButton;
 }
-function resetDoctorsList(medicalStaff) {
+function resetDoctorsList(servicesList, medicalStaff) {
     tabulaRasa("searchblock"); // IT_ Si cancella il contenuto. | EN_ The content is deleted.
     document.getElementById("searchblock").appendChild(createMainForm(medicalStaff)); // IT_ Si ricrea il form vuoto. | EN_ The empty form is recreated.
     tabulaRasa("doclist"); // IT_ Si cancella il contenuto. | EN_ The content is deleted.
-    document.getElementById("doclist").appendChild(createDoctorsList(medicalStaff)); // IT_ Si ricrea la lista con tutti i dottori. | EN_ Recreate the list with all the doctors.
+    document.getElementById("doclist").appendChild(createDoctorsList(medicalStaff, servicesList, medicalStaff)); // IT_ Si ricrea la lista con tutti i dottori. | EN_ Recreate the list with all the doctors.
 }
 
 // IT_ La sezione contenente la lista dei dottori. | EN_ The section containing the list of doctors.
@@ -185,7 +185,7 @@ function createDoctorsItem(doctorToShow, pos, servicesList, medicalStaff) {
     const doctorsItem = document.createElement("li");
     const doctorsLink = document.createElement("button");
     doctorsLink.className = "doctors-box doctors-box__" + (num);
-    doctorsLink.onclick = function() { goDoctor(doctorToShow.firstname, doctorToShow.lastname, doctorToShow.avatar, doctorToShow.specialization, doctorToShow.workplace, doctorToShow.about, servicesList, medicalStaff); };
+    doctorsLink.onclick = function() { goDoctor(doctorToShow, servicesList, medicalStaff); };
     doctorsLink.appendChild(createImage(doctorToShow.avatar, 54, 66, "Avatar Doctor"));
     const doctorsInfo = document.createElement("div");
     doctorsInfo.appendChild(createSimpleContent("h5", "Dr. " + doctorToShow.firstname + " " + doctorToShow.lastname));

@@ -53,6 +53,6 @@ export function goMain(servicesList, medicalStaff) {
 }
 
 // IT_ Per creare la pagina del singolo dottore. | EN_ To create the single doctor page.
-export function goDoctor(firstname, lastname, avatar, specialization, workplace, about, servicesList, medicalStaff) {
-    document.getElementById("content").appendChild(createPageDoctor(firstname, lastname, avatar, specialization, workplace, about, servicesList, medicalStaff));
+export function goDoctor(doctorToShow, servicesList, medicalStaff) {
+    document.getElementById("content").appendChild(createPageDoctor(doctorToShow, servicesList, medicalStaff));
 }

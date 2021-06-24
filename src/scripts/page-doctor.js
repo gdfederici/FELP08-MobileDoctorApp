@@ -10,14 +10,14 @@ import icoVideo from '../img/ico_video.svg';
 /*** ------------------------- *** ------------------------- *** ------------------------- *** ------------------------- ***/
 
 // IT_ Cancella il contenuto e crea la pagina del singolo dottore. | EN_ Erase the content and create the single doctor page.
-export function createPageDoctor(firstname, lastname, avatar, specialization, workplace, about, servicesList, medicalStaff) {
+export function createPageDoctor(doctorToShow, servicesList, medicalStaff) {
     tabulaRasa("content");
     const pageDoctor = document.createElement("section");
     pageDoctor.setAttribute("id", "page-doctor");
     pageDoctor.className = "page page-doctor";
     pageDoctor.appendChild(pageDoctorNavbar(servicesList, medicalStaff));
-    pageDoctor.appendChild(pageDoctorHeader(firstname, lastname, avatar, specialization, workplace));
-    pageDoctor.appendChild(pageDoctorAbout(about));
+    pageDoctor.appendChild(pageDoctorHeader(doctorToShow.firstname, doctorToShow.lastname, doctorToShow.avatar, doctorToShow.specialization, doctorToShow.workplace));
+    pageDoctor.appendChild(pageDoctorAbout(doctorToShow.about));
     pageDoctor.appendChild(pageDoctorSchedules());
     return pageDoctor;
 }
