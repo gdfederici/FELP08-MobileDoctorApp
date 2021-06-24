@@ -4,7 +4,7 @@
 <br/>
 
 ## Anteprima / Screenshot:
-![Screenshot of project](https://github.com/gdfederici/JS_LP03-HangmanGame_01/blob/main/img/screenshot.jpg)<br/>
+![Screenshot of project](https://github.com/gdfederici/FELP08-MobileDoctorApp/blob/main/src/img/mobiledoctorapp-thumb.jpg)<br/>
 <br/>
 
 ## Descrizione / Description:

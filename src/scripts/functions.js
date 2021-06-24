@@ -1,8 +1,6 @@
 // IT_ Importare funzioni. | EN_ Import functions.
 import { createPageMain } from './page-main';
 import { createPageDoctor } from './page-doctor';
-// IT_ Importare immagini. | EN_ Import images.
-import thumbDeploy from '../img/mobiledoctorapp-thumb.jpg';
 
 /*** ------------------------- *** ------------------------- *** ------------------------- *** ------------------------- ***/
 
