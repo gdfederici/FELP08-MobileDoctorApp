@@ -86,7 +86,7 @@ function createMainForm(servicesList, medicalStaff) {
     mainForm.appendChild(mainFormInput);
     const mainFormSubmit = document.createElement("button");
     mainFormSubmit.className = "button button__typo1 button__search";
-    mainFormSubmit.onclick = function() { createNameFilterDoctorsList(document.getElementById("searchdoctors").value.toLowerCase(), servicesList, medicalStaff); };
+    mainFormSubmit.onclick = function() { event.preventDefault(); createNameFilterDoctorsList(document.getElementById("searchdoctors").value.toLowerCase(), servicesList, medicalStaff); };
     mainForm.appendChild(mainFormSubmit);
     return mainForm;
 }
