@@ -27,12 +27,18 @@ class Doctor {
 // IT_ Importo i dati dal file Json (perché voglio utilizzare le classi). | EN_ Import the data from the Json file.
 function createMedicalStaff() {
     const listDoctors = doctorsJson.doctorsList;
+    /*
     const listDoctorsLength = listDoctors.length;
     let medicalStaff = [];
     for (let i=0; i<listDoctorsLength; i++) {
         medicalStaff.push(new Doctor(listDoctors[i].firstname, listDoctors[i].lastname, listDoctors[i].avatar, listDoctors[i].specialization, listDoctors[i].workplace, listDoctors[i].about));
     }
     return medicalStaff;
+    */
+    // IT_ Sostituito per correzione. | EN_ Replaced for correction.
+    return listDoctors.map( function(doctor) {
+        return new Doctor(doctor.firstname, doctor.lastname, doctor.avatar, doctor.specialization, doctor.workplace, doctor.about)
+    })
 }
 
 // IT_ Classe singola categoria. | EN_ Single class category.
@@ -45,12 +51,18 @@ class Service {
 // IT_ Importo i dati dal file Json (perché voglio utilizzare le classi). | EN_ Import the data from the Json file.
 function createServiceList() {
     const listCategories = categoriesJson.categoriesList;
+    /*
     const listCategoriesLength = listCategories.length;
     let servicesList = [];
     for (let i=0; i<listCategoriesLength; i++) {
         servicesList.push(new Service(listCategories[i].name, listCategories[i].image));
     }
     return servicesList;
+    */
+    // IT_ Sostituito per correzione. | EN_ Replaced for correction.
+    return listCategories.map( function(category) {
+    return new Service(category.name, category.image)
+})
 }
 
 /*** ------------------------- *** ------------------------- *** ------------------------- *** ------------------------- ***/
